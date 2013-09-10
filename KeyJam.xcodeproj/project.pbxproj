@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		080B6FAB17DEE3FF00B11002 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080B6FAA17DEE3FF00B11002 /* Cocoa.framework */; };
+		080B6FAD17DEE3FF00B11002 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080B6FAC17DEE3FF00B11002 /* SpriteKit.framework */; };
+		080B6FB717DEE3FF00B11002 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FB517DEE3FF00B11002 /* InfoPlist.strings */; };
+		080B6FB917DEE3FF00B11002 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FB817DEE3FF00B11002 /* main.m */; };
+		080B6FBD17DEE3FF00B11002 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FBB17DEE3FF00B11002 /* Credits.rtf */; };
+		080B6FBF17DEE3FF00B11002 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FBE17DEE3FF00B11002 /* MainMenu.xib */; };
+		080B6FC117DEE3FF00B11002 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FC017DEE3FF00B11002 /* MyScene.m */; };
+		080B6FC417DEE3FF00B11002 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FC317DEE3FF00B11002 /* AppDelegate.m */; };
+		080B6FC717DEE3FF00B11002 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FC617DEE3FF00B11002 /* Spaceship.png */; };
+		080B6FC917DEE3FF00B11002 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FC817DEE3FF00B11002 /* Images.xcassets */; };
+		080B6FD017DEE3FF00B11002 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080B6FCF17DEE3FF00B11002 /* XCTest.framework */; };
+		080B6FD117DEE3FF00B11002 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080B6FAA17DEE3FF00B11002 /* Cocoa.framework */; };
+		080B6FD917DEE3FF00B11002 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FD717DEE3FF00B11002 /* InfoPlist.strings */; };
+		080B6FDB17DEE3FF00B11002 /* KeyJamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FDA17DEE3FF00B11002 /* KeyJamTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		080B6FD217DEE3FF00B11002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 080B6F9F17DEE3FF00B11002 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 080B6FA617DEE3FF00B11002;
+			remoteInfo = KeyJam;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		080B6FA717DEE3FF00B11002 /* KeyJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		080B6FAA17DEE3FF00B11002 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		080B6FAC17DEE3FF00B11002 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		080B6FAF17DEE3FF00B11002 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		080B6FB017DEE3FF00B11002 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		080B6FB117DEE3FF00B11002 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		080B6FB417DEE3FF00B11002 /* KeyJam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyJam-Info.plist"; sourceTree = "<group>"; };
+		080B6FB617DEE3FF00B11002 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		080B6FB817DEE3FF00B11002 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		080B6FBA17DEE3FF00B11002 /* KeyJam-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeyJam-Prefix.pch"; sourceTree = "<group>"; };
+		080B6FBC17DEE3FF00B11002 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		080B6FBE17DEE3FF00B11002 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		080B6FC017DEE3FF00B11002 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		080B6FC217DEE3FF00B11002 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		080B6FC317DEE3FF00B11002 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		080B6FC517DEE3FF00B11002 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		080B6FC617DEE3FF00B11002 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		080B6FC817DEE3FF00B11002 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		080B6FCE17DEE3FF00B11002 /* KeyJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		080B6FCF17DEE3FF00B11002 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		080B6FD617DEE3FF00B11002 /* KeyJamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyJamTests-Info.plist"; sourceTree = "<group>"; };
+		080B6FD817DEE3FF00B11002 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		080B6FDA17DEE3FF00B11002 /* KeyJamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyJamTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		080B6FA417DEE3FF00B11002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				080B6FAD17DEE3FF00B11002 /* SpriteKit.framework in Frameworks */,
+				080B6FAB17DEE3FF00B11002 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		080B6FCB17DEE3FF00B11002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				080B6FD117DEE3FF00B11002 /* Cocoa.framework in Frameworks */,
+				080B6FD017DEE3FF00B11002 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080B6F9E17DEE3FF00B11002 = {
+			isa = PBXGroup;
+			children = (
+				080B6FB217DEE3FF00B11002 /* KeyJam */,
+				080B6FD417DEE3FF00B11002 /* KeyJamTests */,
+				080B6FA917DEE3FF00B11002 /* Frameworks */,
+				080B6FA817DEE3FF00B11002 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		080B6FA817DEE3FF00B11002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				080B6FA717DEE3FF00B11002 /* KeyJam.app */,
+				080B6FCE17DEE3FF00B11002 /* KeyJamTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		080B6FA917DEE3FF00B11002 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				080B6FAA17DEE3FF00B11002 /* Cocoa.framework */,
+				080B6FAC17DEE3FF00B11002 /* SpriteKit.framework */,
+				080B6FCF17DEE3FF00B11002 /* XCTest.framework */,
+				080B6FAE17DEE3FF00B11002 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		080B6FAE17DEE3FF00B11002 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				080B6FAF17DEE3FF00B11002 /* AppKit.framework */,
+				080B6FB017DEE3FF00B11002 /* CoreData.framework */,
+				080B6FB117DEE3FF00B11002 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		080B6FB217DEE3FF00B11002 /* KeyJam */ = {
+			isa = PBXGroup;
+			children = (
+				080B6FBE17DEE3FF00B11002 /* MainMenu.xib */,
+				080B6FC017DEE3FF00B11002 /* MyScene.m */,
+				080B6FC217DEE3FF00B11002 /* MyScene.h */,
+				080B6FC317DEE3FF00B11002 /* AppDelegate.m */,
+				080B6FC517DEE3FF00B11002 /* AppDelegate.h */,
+				080B6FC617DEE3FF00B11002 /* Spaceship.png */,
+				080B6FC817DEE3FF00B11002 /* Images.xcassets */,
+				080B6FB317DEE3FF00B11002 /* Supporting Files */,
+			);
+			path = KeyJam;
+			sourceTree = "<group>";
+		};
+		080B6FB317DEE3FF00B11002 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				080B6FB417DEE3FF00B11002 /* KeyJam-Info.plist */,
+				080B6FB517DEE3FF00B11002 /* InfoPlist.strings */,
+				080B6FB817DEE3FF00B11002 /* main.m */,
+				080B6FBA17DEE3FF00B11002 /* KeyJam-Prefix.pch */,
+				080B6FBB17DEE3FF00B11002 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		080B6FD417DEE3FF00B11002 /* KeyJamTests */ = {
+			isa = PBXGroup;
+			children = (
+				080B6FDA17DEE3FF00B11002 /* KeyJamTests.m */,
+				080B6FD517DEE3FF00B11002 /* Supporting Files */,
+			);
+			path = KeyJamTests;
+			sourceTree = "<group>";
+		};
+		080B6FD517DEE3FF00B11002 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				080B6FD617DEE3FF00B11002 /* KeyJamTests-Info.plist */,
+				080B6FD717DEE3FF00B11002 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		080B6FA617DEE3FF00B11002 /* KeyJam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 080B6FDE17DEE3FF00B11002 /* Build configuration list for PBXNativeTarget "KeyJam" */;
+			buildPhases = (
+				080B6FA317DEE3FF00B11002 /* Sources */,
+				080B6FA417DEE3FF00B11002 /* Frameworks */,
+				080B6FA517DEE3FF00B11002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyJam;
+			productName = KeyJam;
+			productReference = 080B6FA717DEE3FF00B11002 /* KeyJam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		080B6FCD17DEE3FF00B11002 /* KeyJamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 080B6FE117DEE3FF00B11002 /* Build configuration list for PBXNativeTarget "KeyJamTests" */;
+			buildPhases = (
+				080B6FCA17DEE3FF00B11002 /* Sources */,
+				080B6FCB17DEE3FF00B11002 /* Frameworks */,
+				080B6FCC17DEE3FF00B11002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				080B6FD317DEE3FF00B11002 /* PBXTargetDependency */,
+			);
+			name = KeyJamTests;
+			productName = KeyJamTests;
+			productReference = 080B6FCE17DEE3FF00B11002 /* KeyJamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		080B6F9F17DEE3FF00B11002 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Peter Marks";
+				TargetAttributes = {
+					080B6FCD17DEE3FF00B11002 = {
+						TestTargetID = 080B6FA617DEE3FF00B11002;
+					};
+				};
+			};
+			buildConfigurationList = 080B6FA217DEE3FF00B11002 /* Build configuration list for PBXProject "KeyJam" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 080B6F9E17DEE3FF00B11002;
+			productRefGroup = 080B6FA817DEE3FF00B11002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				080B6FA617DEE3FF00B11002 /* KeyJam */,
+				080B6FCD17DEE3FF00B11002 /* KeyJamTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		080B6FA517DEE3FF00B11002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				080B6FC717DEE3FF00B11002 /* Spaceship.png in Resources */,
+				080B6FC917DEE3FF00B11002 /* Images.xcassets in Resources */,
+				080B6FB717DEE3FF00B11002 /* InfoPlist.strings in Resources */,
+				080B6FBD17DEE3FF00B11002 /* Credits.rtf in Resources */,
+				080B6FBF17DEE3FF00B11002 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		080B6FCC17DEE3FF00B11002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				080B6FD917DEE3FF00B11002 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		080B6FA317DEE3FF00B11002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				080B6FC117DEE3FF00B11002 /* MyScene.m in Sources */,
+				080B6FB917DEE3FF00B11002 /* main.m in Sources */,
+				080B6FC417DEE3FF00B11002 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		080B6FCA17DEE3FF00B11002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				080B6FDB17DEE3FF00B11002 /* KeyJamTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		080B6FD317DEE3FF00B11002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 080B6FA617DEE3FF00B11002 /* KeyJam */;
+			targetProxy = 080B6FD217DEE3FF00B11002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		080B6FB517DEE3FF00B11002 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				080B6FB617DEE3FF00B11002 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		080B6FBB17DEE3FF00B11002 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				080B6FBC17DEE3FF00B11002 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		080B6FD717DEE3FF00B11002 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				080B6FD817DEE3FF00B11002 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		080B6FDC17DEE3FF00B11002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		080B6FDD17DEE3FF00B11002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		080B6FDF17DEE3FF00B11002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyJam/KeyJam-Prefix.pch";
+				INFOPLIST_FILE = "KeyJam/KeyJam-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		080B6FE017DEE3FF00B11002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyJam/KeyJam-Prefix.pch";
+				INFOPLIST_FILE = "KeyJam/KeyJam-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		080B6FE217DEE3FF00B11002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KeyJam.app/Contents/MacOS/KeyJam";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyJam/KeyJam-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "KeyJamTests/KeyJamTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		080B6FE317DEE3FF00B11002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KeyJam.app/Contents/MacOS/KeyJam";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyJam/KeyJam-Prefix.pch";
+				INFOPLIST_FILE = "KeyJamTests/KeyJamTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		080B6FA217DEE3FF00B11002 /* Build configuration list for PBXProject "KeyJam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				080B6FDC17DEE3FF00B11002 /* Debug */,
+				080B6FDD17DEE3FF00B11002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		080B6FDE17DEE3FF00B11002 /* Build configuration list for PBXNativeTarget "KeyJam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				080B6FDF17DEE3FF00B11002 /* Debug */,
+				080B6FE017DEE3FF00B11002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		080B6FE117DEE3FF00B11002 /* Build configuration list for PBXNativeTarget "KeyJamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				080B6FE217DEE3FF00B11002 /* Debug */,
+				080B6FE317DEE3FF00B11002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 080B6F9F17DEE3FF00B11002 /* Project object */;
+}

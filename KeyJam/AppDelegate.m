@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MyScene.h"
+#import "KJKeyboardManager.h"
+#import "KJAudioManager.h"
 
 @implementation AppDelegate
 
@@ -15,6 +17,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [[KJAudioManager sharedManager] setUp];
+    
+    // Set up keyboard manager with 25 note keyboard
+    [[KJKeyboardManager sharedManager] setNoteRange:NSMakeRange(0, 25)];
+    
     /* Pick a size for the scene */
     SKScene *scene = [MyScene sceneWithSize:CGSizeMake(1024, 768)];
 

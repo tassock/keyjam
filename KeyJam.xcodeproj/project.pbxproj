@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		080B6FAB17DEE3FF00B11002 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080B6FAA17DEE3FF00B11002 /* Cocoa.framework */; };
-		080B6FAD17DEE3FF00B11002 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080B6FAC17DEE3FF00B11002 /* SpriteKit.framework */; };
 		080B6FB717DEE3FF00B11002 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FB517DEE3FF00B11002 /* InfoPlist.strings */; };
 		080B6FB917DEE3FF00B11002 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FB817DEE3FF00B11002 /* main.m */; };
 		080B6FBD17DEE3FF00B11002 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FBB17DEE3FF00B11002 /* Credits.rtf */; };
@@ -21,6 +20,14 @@
 		080B6FD117DEE3FF00B11002 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080B6FAA17DEE3FF00B11002 /* Cocoa.framework */; };
 		080B6FD917DEE3FF00B11002 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 080B6FD717DEE3FF00B11002 /* InfoPlist.strings */; };
 		080B6FDB17DEE3FF00B11002 /* KeyJamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FDA17DEE3FF00B11002 /* KeyJamTests.m */; };
+		080B6FE617E02FA100B11002 /* KJKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FE517E02FA100B11002 /* KJKeyModel.m */; };
+		080B6FE917E0309400B11002 /* KJKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FE817E0309400B11002 /* KJKeyboardManager.m */; };
+		089AA8C41810E91D0047E4A2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089AA8C31810E91D0047E4A2 /* SpriteKit.framework */; };
+		08A2021A17E6D9AB00C50C18 /* KJAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A2021917E6D9AB00C50C18 /* KJAudioManager.m */; };
+		08A2021E17E6E2E400C50C18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021B17E6E2E400C50C18 /* AudioToolbox.framework */; };
+		08A2021F17E6E2E400C50C18 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021C17E6E2E400C50C18 /* AudioUnit.framework */; };
+		08A2022017E6E2E400C50C18 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021D17E6E2E400C50C18 /* CoreAudio.framework */; };
+		08A2022217E6E2F100C50C18 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2022117E6E2F100C50C18 /* CoreMIDI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,6 @@
 /* Begin PBXFileReference section */
 		080B6FA717DEE3FF00B11002 /* KeyJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		080B6FAA17DEE3FF00B11002 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		080B6FAC17DEE3FF00B11002 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		080B6FAF17DEE3FF00B11002 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		080B6FB017DEE3FF00B11002 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		080B6FB117DEE3FF00B11002 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +63,17 @@
 		080B6FD617DEE3FF00B11002 /* KeyJamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyJamTests-Info.plist"; sourceTree = "<group>"; };
 		080B6FD817DEE3FF00B11002 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		080B6FDA17DEE3FF00B11002 /* KeyJamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyJamTests.m; sourceTree = "<group>"; };
+		080B6FE417E02FA100B11002 /* KJKeyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJKeyModel.h; sourceTree = "<group>"; };
+		080B6FE517E02FA100B11002 /* KJKeyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyModel.m; sourceTree = "<group>"; };
+		080B6FE717E0309400B11002 /* KJKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJKeyboardManager.h; sourceTree = "<group>"; };
+		080B6FE817E0309400B11002 /* KJKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyboardManager.m; sourceTree = "<group>"; };
+		089AA8C31810E91D0047E4A2 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		08A2021817E6D9AB00C50C18 /* KJAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJAudioManager.h; sourceTree = "<group>"; };
+		08A2021917E6D9AB00C50C18 /* KJAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJAudioManager.m; sourceTree = "<group>"; };
+		08A2021B17E6E2E400C50C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		08A2021C17E6E2E400C50C18 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		08A2021D17E6E2E400C50C18 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		08A2022117E6E2F100C50C18 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +81,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				080B6FAD17DEE3FF00B11002 /* SpriteKit.framework in Frameworks */,
+				089AA8C41810E91D0047E4A2 /* SpriteKit.framework in Frameworks */,
+				08A2022217E6E2F100C50C18 /* CoreMIDI.framework in Frameworks */,
+				08A2021E17E6E2E400C50C18 /* AudioToolbox.framework in Frameworks */,
+				08A2021F17E6E2E400C50C18 /* AudioUnit.framework in Frameworks */,
+				08A2022017E6E2E400C50C18 /* CoreAudio.framework in Frameworks */,
 				080B6FAB17DEE3FF00B11002 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,8 +124,12 @@
 		080B6FA917DEE3FF00B11002 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				089AA8C31810E91D0047E4A2 /* SpriteKit.framework */,
+				08A2022117E6E2F100C50C18 /* CoreMIDI.framework */,
+				08A2021B17E6E2E400C50C18 /* AudioToolbox.framework */,
+				08A2021C17E6E2E400C50C18 /* AudioUnit.framework */,
+				08A2021D17E6E2E400C50C18 /* CoreAudio.framework */,
 				080B6FAA17DEE3FF00B11002 /* Cocoa.framework */,
-				080B6FAC17DEE3FF00B11002 /* SpriteKit.framework */,
 				080B6FCF17DEE3FF00B11002 /* XCTest.framework */,
 				080B6FAE17DEE3FF00B11002 /* Other Frameworks */,
 			);
@@ -132,6 +157,12 @@
 				080B6FC617DEE3FF00B11002 /* Spaceship.png */,
 				080B6FC817DEE3FF00B11002 /* Images.xcassets */,
 				080B6FB317DEE3FF00B11002 /* Supporting Files */,
+				080B6FE417E02FA100B11002 /* KJKeyModel.h */,
+				080B6FE517E02FA100B11002 /* KJKeyModel.m */,
+				080B6FE717E0309400B11002 /* KJKeyboardManager.h */,
+				080B6FE817E0309400B11002 /* KJKeyboardManager.m */,
+				08A2021817E6D9AB00C50C18 /* KJAudioManager.h */,
+				08A2021917E6D9AB00C50C18 /* KJAudioManager.m */,
 			);
 			path = KeyJam;
 			sourceTree = "<group>";
@@ -266,7 +297,10 @@
 			files = (
 				080B6FC117DEE3FF00B11002 /* MyScene.m in Sources */,
 				080B6FB917DEE3FF00B11002 /* main.m in Sources */,
+				080B6FE917E0309400B11002 /* KJKeyboardManager.m in Sources */,
+				080B6FE617E02FA100B11002 /* KJKeyModel.m in Sources */,
 				080B6FC417DEE3FF00B11002 /* AppDelegate.m in Sources */,
+				08A2021A17E6D9AB00C50C18 /* KJAudioManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +507,7 @@
 				080B6FE017DEE3FF00B11002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		080B6FE117DEE3FF00B11002 /* Build configuration list for PBXNativeTarget "KeyJamTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +516,7 @@
 				080B6FE317DEE3FF00B11002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

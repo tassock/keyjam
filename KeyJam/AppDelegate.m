@@ -66,7 +66,7 @@
     [[BMMidiManager sharedInstance] setUp];
     [BMMidiManager sharedInstance].instrumentDelegate = sampler2;
     
-    BMMusicPlayer *musicPlayer = [[BMMusicPlayer alloc] init];
+    BMMusicPlayer *musicPlayer = [BMMusicPlayer sharedInstance];
     [musicPlayer loadSequenceFromMidiFile:@"CarntSleepBassline"];
     musicPlayer.currentTempo = 70.0;
     [musicPlayer noteEventsOnOrAfterBeat:0 beforeBeat:32];

@@ -10,7 +10,27 @@
 #import "KJKeyboardManager.h"
 #import "KJKeyModel.h"
 
+#import "BMMusicPlayer.h"
+
+@interface MyScene ()
+@property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
+@property (nonatomic, strong, readwrite) SKNode *scrollLayerNode;
+@property (nonatomic, strong, readwrite) SKNode *keyboardLayerNode;
+@end
+
 @implementation MyScene
+
+- (void)setupSceneLayers
+{
+    _hudLayerNode = [SKNode node];
+    [self addChild:_hudLayerNode];
+    
+    _scrollLayerNode = [SKNode node];
+    [self addChild:_scrollLayerNode];
+    
+    _keyboardLayerNode = [SKNode node];
+    [self addChild:_keyboardLayerNode];
+}
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -27,12 +47,27 @@
         
         [self addChild:myLabel];
         
-        [self addKeys];
+        [self setupSceneLayers];
+//        [self setupHUD];
+        [self setupKeyboard];
     }
     return self;
 }
 
-- (void)addKeys
+- (void)setupHUD
+{
+    int barHeight = 45;
+    CGSize backgroundSize = CGSizeMake(self.size.width, barHeight);
+    SKColor *backgroundColor = [SKColor colorWithRed:0 green:0 blue:0.05 alpha:1.0];
+    SKSpriteNode *hudBarBackground = [SKSpriteNode spriteNodeWithColor:backgroundColor size:backgroundSize];
+    hudBarBackground.position = CGPointMake(0, self.size.height - barHeight);
+    hudBarBackground.anchorPoint = CGPointZero;
+    [_hudLayerNode addChild:hudBarBackground];
+    
+    // Add buttons when I figure out how I want to do these. KoboldKit?
+}
+
+- (void)setupKeyboard
 {
     NSRange noteRange = [KJKeyboardManager sharedManager].noteRange;
     long keyCount = [KJKeyboardManager sharedManager].majorKeyCount;
@@ -67,8 +102,26 @@
 -(void)keyDown:(NSEvent *)theEvent
 {
     NSLog(@"key code: %u", theEvent.keyCode);
-    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:theEvent.keyCode];
-    [keyModel noteOn];
+    switch (theEvent.keyCode) {
+        case 49: // space
+            if ([BMMusicPlayer sharedInstance].isPlaying)
+            {
+                [[BMMusicPlayer sharedInstance] pause];
+            }
+            else
+            {
+                [[BMMusicPlayer sharedInstance] play];
+            }
+            break;
+        case 36: // return
+            [[BMMusicPlayer sharedInstance] reset];
+            
+        default:
+            break;
+    }
+    
+//    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:theEvent.keyCode];
+//    [keyModel noteOn];
 }
 
 //-(void)mouseDown:(NSEvent *)theEvent {

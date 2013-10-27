@@ -9,12 +9,14 @@
 #import "MyScene.h"
 #import "KJKeyboardManager.h"
 #import "KJKeyModel.h"
+#import "KJKeyboardNode.h"
 
 #import "BMMusicPlayer.h"
 
 @interface MyScene ()
 {
     SKLabelNode *beatLabel;
+    KJKeyboardNode *keyboardNode;
 }
 @property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
 @property (nonatomic, strong, readwrite) SKNode *scrollLayerNode;
@@ -52,7 +54,12 @@
         
         [self setupSceneLayers];
         [self setupHUD];
-        [self setupKeyboard];
+        
+        keyboardNode = [[KJKeyboardNode alloc] initWithSize:CGSizeMake(self.size.width, 300)];
+        keyboardNode.position = CGPointZero;
+        keyboardNode.anchorPoint = CGPointZero;
+        [[BMMidiManager sharedInstance] addListener:[KJKeyboardManager sharedManager]];
+        [_keyboardLayerNode addChild:keyboardNode];
     }
     return self;
 }
@@ -78,38 +85,6 @@
     beatLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     beatLabel.position = CGPointMake(self.size.width / 2, self.size.height - beatLabel.frame.size.height + 3);
     [_hudLayerNode addChild:beatLabel];
-}
-
-- (void)setupKeyboard
-{
-    NSRange noteRange = [KJKeyboardManager sharedManager].noteRange;
-    long keyCount = [KJKeyboardManager sharedManager].majorKeyCount;
-    int keyWidth = self.size.width / (CGFloat)keyCount;
-    int keyHeight = keyWidth * 2;
-    CGFloat spaceBetweenKeys = 8.0;
-    CGFloat keyRadius = 4.0;
-    CGFloat majorX = 0;
-    CGFloat minorX = keyWidth / 2.0;
-    for (NSInteger i = noteRange.location; i < noteRange.length; i ++)
-    {
-        KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:i];
-        SKShapeNode *shape = [[SKShapeNode alloc] init];
-        keyModel.shapeNode = shape;
-        if (keyModel.isMajor)
-        {
-            shape.path = CGPathCreateWithRoundedRect(CGRectMake(majorX, 0, keyWidth - spaceBetweenKeys, keyHeight), keyRadius, 0, NULL);
-            majorX += keyWidth;
-            shape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-        }
-        else
-        {
-            shape.path = CGPathCreateWithRoundedRect(CGRectMake(minorX, keyHeight, keyWidth - spaceBetweenKeys, keyHeight), keyRadius, 0, NULL);
-            minorX += keyWidth;
-            if (keyModel.keyEnum == KJKeyModelKeyDSharp || keyModel.keyEnum == KJKeyModelKeyASharp) minorX += keyWidth;
-            shape.fillColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
-        }
-        [self addChild:shape];
-    }
 }
 
 -(void)keyDown:(NSEvent *)theEvent

@@ -27,7 +27,7 @@
     [self setUpBMAudio];
     
     // Set up keyboard manager with 25 note keyboard
-    [[KJKeyboardManager sharedManager] setNoteRange:NSMakeRange(0, 25)];
+    [[KJKeyboardManager sharedManager] setNoteRange:NSMakeRange(24, 25)];
     
     /* Pick a size for the scene */
     SKScene *scene = [MyScene sceneWithSize:CGSizeMake(1024, 768)];
@@ -64,7 +64,7 @@
     [sampler2 loadPreset:@"Trombone"];
     
     [[BMMidiManager sharedInstance] setUp];
-    [BMMidiManager sharedInstance].instrumentDelegate = sampler2;
+    [[BMMidiManager sharedInstance] addListener:sampler2];
     
     BMMusicPlayer *musicPlayer = [BMMusicPlayer sharedInstance];
     [musicPlayer loadSequenceFromMidiFile:@"CarntSleepBassline"];

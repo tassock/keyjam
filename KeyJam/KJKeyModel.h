@@ -31,4 +31,5 @@ typedef enum {
 - (void)noteOn;
 - (void)noteOff;
 + (instancetype)keyModelWithNoteNumber:(NSUInteger)noteNumber;
+- (SKColor*)defaultColor;
 @end

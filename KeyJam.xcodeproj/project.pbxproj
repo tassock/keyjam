@@ -42,6 +42,7 @@
 		08E9EB8B181CE7010004B1C0 /* CarntSleepBassline.mid in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB5E181CE7010004B1C0 /* CarntSleepBassline.mid */; };
 		08E9EB92181CE7010004B1C0 /* Trombone.aupreset in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB67181CE7010004B1C0 /* Trombone.aupreset */; };
 		08E9EBA0181CE8C00004B1C0 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB9F181CE8C00004B1C0 /* Sounds */; };
+		08E9EBA6181D96570004B1C0 /* KJKeyboardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EBA5181D96570004B1C0 /* KJKeyboardNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,8 @@
 		08E9EB5E181CE7010004B1C0 /* CarntSleepBassline.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = CarntSleepBassline.mid; sourceTree = "<group>"; };
 		08E9EB67181CE7010004B1C0 /* Trombone.aupreset */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Trombone.aupreset; sourceTree = "<group>"; };
 		08E9EB9F181CE8C00004B1C0 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		08E9EBA4181D96570004B1C0 /* KJKeyboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJKeyboardNode.h; sourceTree = "<group>"; };
+		08E9EBA5181D96570004B1C0 /* KJKeyboardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyboardNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 				080B6FE517E02FA100B11002 /* KJKeyModel.m */,
 				080B6FE717E0309400B11002 /* KJKeyboardManager.h */,
 				080B6FE817E0309400B11002 /* KJKeyboardManager.m */,
+				08E9EBA4181D96570004B1C0 /* KJKeyboardNode.h */,
+				08E9EBA5181D96570004B1C0 /* KJKeyboardNode.m */,
 			);
 			path = KeyJam;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				08E9EB86181CE7010004B1C0 /* BMAudioTrack.m in Sources */,
 				08E9EB87181CE7010004B1C0 /* BMMidiManager.m in Sources */,
 				08E9EB88181CE7010004B1C0 /* BMMusicPlayer.m in Sources */,
+				08E9EBA6181D96570004B1C0 /* KJKeyboardNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

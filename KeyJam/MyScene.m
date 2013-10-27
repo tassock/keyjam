@@ -13,6 +13,9 @@
 #import "BMMusicPlayer.h"
 
 @interface MyScene ()
+{
+    SKLabelNode *beatLabel;
+}
 @property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
 @property (nonatomic, strong, readwrite) SKNode *scrollLayerNode;
 @property (nonatomic, strong, readwrite) SKNode *keyboardLayerNode;
@@ -48,7 +51,7 @@
         [self addChild:myLabel];
         
         [self setupSceneLayers];
-//        [self setupHUD];
+        [self setupHUD];
         [self setupKeyboard];
     }
     return self;
@@ -56,6 +59,7 @@
 
 - (void)setupHUD
 {
+    // background
     int barHeight = 45;
     CGSize backgroundSize = CGSizeMake(self.size.width, barHeight);
     SKColor *backgroundColor = [SKColor colorWithRed:0 green:0 blue:0.05 alpha:1.0];
@@ -65,6 +69,15 @@
     [_hudLayerNode addChild:hudBarBackground];
     
     // Add buttons when I figure out how I want to do these. KoboldKit?
+    
+    // beat label
+    beatLabel = [SKLabelNode labelNodeWithFontNamed:@"Monaco"];
+    beatLabel.fontSize = 30.0;
+    beatLabel.text = @"1.1.1";
+    beatLabel.name = @"beatLabel";
+    beatLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    beatLabel.position = CGPointMake(self.size.width / 2, self.size.height - beatLabel.frame.size.height + 3);
+    [_hudLayerNode addChild:beatLabel];
 }
 
 - (void)setupKeyboard
@@ -143,6 +156,7 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    beatLabel.text = [BMMusicPlayer sharedInstance].currentBeatString;
 }
 
 @end

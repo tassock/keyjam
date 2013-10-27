@@ -23,11 +23,25 @@
 		080B6FE617E02FA100B11002 /* KJKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FE517E02FA100B11002 /* KJKeyModel.m */; };
 		080B6FE917E0309400B11002 /* KJKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 080B6FE817E0309400B11002 /* KJKeyboardManager.m */; };
 		089AA8C41810E91D0047E4A2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 089AA8C31810E91D0047E4A2 /* SpriteKit.framework */; };
-		08A2021A17E6D9AB00C50C18 /* KJAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A2021917E6D9AB00C50C18 /* KJAudioManager.m */; };
 		08A2021E17E6E2E400C50C18 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021B17E6E2E400C50C18 /* AudioToolbox.framework */; };
 		08A2021F17E6E2E400C50C18 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021C17E6E2E400C50C18 /* AudioUnit.framework */; };
 		08A2022017E6E2E400C50C18 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021D17E6E2E400C50C18 /* CoreAudio.framework */; };
 		08A2022217E6E2F100C50C18 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2022117E6E2F100C50C18 /* CoreMIDI.framework */; };
+		08E9EB7E181CE7010004B1C0 /* BMAudioUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB45181CE7010004B1C0 /* BMAudioUnit.m */; };
+		08E9EB7F181CE7010004B1C0 /* BMDistortionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB47181CE7010004B1C0 /* BMDistortionUnit.m */; };
+		08E9EB80181CE7010004B1C0 /* BMIOUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB49181CE7010004B1C0 /* BMIOUnit.m */; };
+		08E9EB81181CE7010004B1C0 /* BMMixerUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB4B181CE7010004B1C0 /* BMMixerUnit.m */; };
+		08E9EB82181CE7010004B1C0 /* BMReverbUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB4D181CE7010004B1C0 /* BMReverbUnit.m */; };
+		08E9EB83181CE7010004B1C0 /* BMSamplerUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB4F181CE7010004B1C0 /* BMSamplerUnit.m */; };
+		08E9EB84181CE7010004B1C0 /* BMAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB51181CE7010004B1C0 /* BMAudio.m */; };
+		08E9EB85181CE7010004B1C0 /* BMAudioHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB53181CE7010004B1C0 /* BMAudioHelpers.m */; };
+		08E9EB86181CE7010004B1C0 /* BMAudioTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB55181CE7010004B1C0 /* BMAudioTrack.m */; };
+		08E9EB87181CE7010004B1C0 /* BMMidiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB57181CE7010004B1C0 /* BMMidiManager.m */; };
+		08E9EB88181CE7010004B1C0 /* BMMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB59181CE7010004B1C0 /* BMMusicPlayer.m */; };
+		08E9EB89181CE7010004B1C0 /* BMNoteEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB5B181CE7010004B1C0 /* BMNoteEvent.m */; };
+		08E9EB8B181CE7010004B1C0 /* CarntSleepBassline.mid in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB5E181CE7010004B1C0 /* CarntSleepBassline.mid */; };
+		08E9EB92181CE7010004B1C0 /* Trombone.aupreset in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB67181CE7010004B1C0 /* Trombone.aupreset */; };
+		08E9EBA0181CE8C00004B1C0 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB9F181CE8C00004B1C0 /* Sounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +82,37 @@
 		080B6FE717E0309400B11002 /* KJKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJKeyboardManager.h; sourceTree = "<group>"; };
 		080B6FE817E0309400B11002 /* KJKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyboardManager.m; sourceTree = "<group>"; };
 		089AA8C31810E91D0047E4A2 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		08A2021817E6D9AB00C50C18 /* KJAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJAudioManager.h; sourceTree = "<group>"; };
-		08A2021917E6D9AB00C50C18 /* KJAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJAudioManager.m; sourceTree = "<group>"; };
 		08A2021B17E6E2E400C50C18 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		08A2021C17E6E2E400C50C18 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		08A2021D17E6E2E400C50C18 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		08A2022117E6E2F100C50C18 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		08E9EB44181CE7010004B1C0 /* BMAudioUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAudioUnit.h; sourceTree = "<group>"; };
+		08E9EB45181CE7010004B1C0 /* BMAudioUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAudioUnit.m; sourceTree = "<group>"; };
+		08E9EB46181CE7010004B1C0 /* BMDistortionUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMDistortionUnit.h; sourceTree = "<group>"; };
+		08E9EB47181CE7010004B1C0 /* BMDistortionUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMDistortionUnit.m; sourceTree = "<group>"; };
+		08E9EB48181CE7010004B1C0 /* BMIOUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMIOUnit.h; sourceTree = "<group>"; };
+		08E9EB49181CE7010004B1C0 /* BMIOUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMIOUnit.m; sourceTree = "<group>"; };
+		08E9EB4A181CE7010004B1C0 /* BMMixerUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMixerUnit.h; sourceTree = "<group>"; };
+		08E9EB4B181CE7010004B1C0 /* BMMixerUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMMixerUnit.m; sourceTree = "<group>"; };
+		08E9EB4C181CE7010004B1C0 /* BMReverbUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMReverbUnit.h; sourceTree = "<group>"; };
+		08E9EB4D181CE7010004B1C0 /* BMReverbUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMReverbUnit.m; sourceTree = "<group>"; };
+		08E9EB4E181CE7010004B1C0 /* BMSamplerUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSamplerUnit.h; sourceTree = "<group>"; };
+		08E9EB4F181CE7010004B1C0 /* BMSamplerUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSamplerUnit.m; sourceTree = "<group>"; };
+		08E9EB50181CE7010004B1C0 /* BMAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAudio.h; sourceTree = "<group>"; };
+		08E9EB51181CE7010004B1C0 /* BMAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAudio.m; sourceTree = "<group>"; };
+		08E9EB52181CE7010004B1C0 /* BMAudioHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAudioHelpers.h; sourceTree = "<group>"; };
+		08E9EB53181CE7010004B1C0 /* BMAudioHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAudioHelpers.m; sourceTree = "<group>"; };
+		08E9EB54181CE7010004B1C0 /* BMAudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAudioTrack.h; sourceTree = "<group>"; };
+		08E9EB55181CE7010004B1C0 /* BMAudioTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAudioTrack.m; sourceTree = "<group>"; };
+		08E9EB56181CE7010004B1C0 /* BMMidiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMidiManager.h; sourceTree = "<group>"; };
+		08E9EB57181CE7010004B1C0 /* BMMidiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMMidiManager.m; sourceTree = "<group>"; };
+		08E9EB58181CE7010004B1C0 /* BMMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMMusicPlayer.h; sourceTree = "<group>"; };
+		08E9EB59181CE7010004B1C0 /* BMMusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMMusicPlayer.m; sourceTree = "<group>"; };
+		08E9EB5A181CE7010004B1C0 /* BMNoteEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNoteEvent.h; sourceTree = "<group>"; };
+		08E9EB5B181CE7010004B1C0 /* BMNoteEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNoteEvent.m; sourceTree = "<group>"; };
+		08E9EB5E181CE7010004B1C0 /* CarntSleepBassline.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = CarntSleepBassline.mid; sourceTree = "<group>"; };
+		08E9EB67181CE7010004B1C0 /* Trombone.aupreset */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Trombone.aupreset; sourceTree = "<group>"; };
+		08E9EB9F181CE8C00004B1C0 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +148,7 @@
 				080B6FD417DEE3FF00B11002 /* KeyJamTests */,
 				080B6FA917DEE3FF00B11002 /* Frameworks */,
 				080B6FA817DEE3FF00B11002 /* Products */,
+				08E9EB17181CE7000004B1C0 /* externals */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,8 +201,6 @@
 				080B6FE517E02FA100B11002 /* KJKeyModel.m */,
 				080B6FE717E0309400B11002 /* KJKeyboardManager.h */,
 				080B6FE817E0309400B11002 /* KJKeyboardManager.m */,
-				08A2021817E6D9AB00C50C18 /* KJAudioManager.h */,
-				08A2021917E6D9AB00C50C18 /* KJAudioManager.m */,
 			);
 			path = KeyJam;
 			sourceTree = "<group>";
@@ -195,6 +233,72 @@
 				080B6FD717DEE3FF00B11002 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08E9EB17181CE7000004B1C0 /* externals */ = {
+			isa = PBXGroup;
+			children = (
+				08E9EB18181CE7000004B1C0 /* bmaudio */,
+			);
+			path = externals;
+			sourceTree = "<group>";
+		};
+		08E9EB18181CE7000004B1C0 /* bmaudio */ = {
+			isa = PBXGroup;
+			children = (
+				08E9EB42181CE7010004B1C0 /* Classes */,
+				08E9EB5D181CE7010004B1C0 /* MIDI */,
+				08E9EB9F181CE8C00004B1C0 /* Sounds */,
+				08E9EB67181CE7010004B1C0 /* Trombone.aupreset */,
+			);
+			path = bmaudio;
+			sourceTree = "<group>";
+		};
+		08E9EB42181CE7010004B1C0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				08E9EB43181CE7010004B1C0 /* AudioUnits */,
+				08E9EB50181CE7010004B1C0 /* BMAudio.h */,
+				08E9EB51181CE7010004B1C0 /* BMAudio.m */,
+				08E9EB52181CE7010004B1C0 /* BMAudioHelpers.h */,
+				08E9EB53181CE7010004B1C0 /* BMAudioHelpers.m */,
+				08E9EB54181CE7010004B1C0 /* BMAudioTrack.h */,
+				08E9EB55181CE7010004B1C0 /* BMAudioTrack.m */,
+				08E9EB56181CE7010004B1C0 /* BMMidiManager.h */,
+				08E9EB57181CE7010004B1C0 /* BMMidiManager.m */,
+				08E9EB58181CE7010004B1C0 /* BMMusicPlayer.h */,
+				08E9EB59181CE7010004B1C0 /* BMMusicPlayer.m */,
+				08E9EB5A181CE7010004B1C0 /* BMNoteEvent.h */,
+				08E9EB5B181CE7010004B1C0 /* BMNoteEvent.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		08E9EB43181CE7010004B1C0 /* AudioUnits */ = {
+			isa = PBXGroup;
+			children = (
+				08E9EB44181CE7010004B1C0 /* BMAudioUnit.h */,
+				08E9EB45181CE7010004B1C0 /* BMAudioUnit.m */,
+				08E9EB46181CE7010004B1C0 /* BMDistortionUnit.h */,
+				08E9EB47181CE7010004B1C0 /* BMDistortionUnit.m */,
+				08E9EB48181CE7010004B1C0 /* BMIOUnit.h */,
+				08E9EB49181CE7010004B1C0 /* BMIOUnit.m */,
+				08E9EB4A181CE7010004B1C0 /* BMMixerUnit.h */,
+				08E9EB4B181CE7010004B1C0 /* BMMixerUnit.m */,
+				08E9EB4C181CE7010004B1C0 /* BMReverbUnit.h */,
+				08E9EB4D181CE7010004B1C0 /* BMReverbUnit.m */,
+				08E9EB4E181CE7010004B1C0 /* BMSamplerUnit.h */,
+				08E9EB4F181CE7010004B1C0 /* BMSamplerUnit.m */,
+			);
+			path = AudioUnits;
+			sourceTree = "<group>";
+		};
+		08E9EB5D181CE7010004B1C0 /* MIDI */ = {
+			isa = PBXGroup;
+			children = (
+				08E9EB5E181CE7010004B1C0 /* CarntSleepBassline.mid */,
+			);
+			path = MIDI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +359,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 080B6F9E17DEE3FF00B11002;
 			productRefGroup = 080B6FA817DEE3FF00B11002 /* Products */;
@@ -272,9 +377,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08E9EBA0181CE8C00004B1C0 /* Sounds in Resources */,
 				080B6FC717DEE3FF00B11002 /* Spaceship.png in Resources */,
 				080B6FC917DEE3FF00B11002 /* Images.xcassets in Resources */,
+				08E9EB8B181CE7010004B1C0 /* CarntSleepBassline.mid in Resources */,
 				080B6FB717DEE3FF00B11002 /* InfoPlist.strings in Resources */,
+				08E9EB92181CE7010004B1C0 /* Trombone.aupreset in Resources */,
 				080B6FBD17DEE3FF00B11002 /* Credits.rtf in Resources */,
 				080B6FBF17DEE3FF00B11002 /* MainMenu.xib in Resources */,
 			);
@@ -297,10 +405,21 @@
 			files = (
 				080B6FC117DEE3FF00B11002 /* MyScene.m in Sources */,
 				080B6FB917DEE3FF00B11002 /* main.m in Sources */,
+				08E9EB81181CE7010004B1C0 /* BMMixerUnit.m in Sources */,
 				080B6FE917E0309400B11002 /* KJKeyboardManager.m in Sources */,
 				080B6FE617E02FA100B11002 /* KJKeyModel.m in Sources */,
+				08E9EB85181CE7010004B1C0 /* BMAudioHelpers.m in Sources */,
+				08E9EB7F181CE7010004B1C0 /* BMDistortionUnit.m in Sources */,
+				08E9EB84181CE7010004B1C0 /* BMAudio.m in Sources */,
 				080B6FC417DEE3FF00B11002 /* AppDelegate.m in Sources */,
-				08A2021A17E6D9AB00C50C18 /* KJAudioManager.m in Sources */,
+				08E9EB82181CE7010004B1C0 /* BMReverbUnit.m in Sources */,
+				08E9EB7E181CE7010004B1C0 /* BMAudioUnit.m in Sources */,
+				08E9EB80181CE7010004B1C0 /* BMIOUnit.m in Sources */,
+				08E9EB83181CE7010004B1C0 /* BMSamplerUnit.m in Sources */,
+				08E9EB89181CE7010004B1C0 /* BMNoteEvent.m in Sources */,
+				08E9EB86181CE7010004B1C0 /* BMAudioTrack.m in Sources */,
+				08E9EB87181CE7010004B1C0 /* BMMidiManager.m in Sources */,
+				08E9EB88181CE7010004B1C0 /* BMMusicPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     CGFloat hudHeight;
     CGFloat timelineHeight;
     CGFloat keyboardHeight;
+    CGFloat beatHeight;
 }
 @property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
 @property (nonatomic, strong, readwrite) SKNode *scrollLayerNode;
@@ -59,6 +60,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
         hudHeight = 45;
         keyboardHeight = 240;
         timelineHeight = self.size.height - hudHeight - keyboardHeight;
+        beatHeight = 25;
         
         [self setupSceneLayers];
         [self setUpHUD];
@@ -149,6 +151,8 @@ static inline CGPoint CGPointAdd(const CGPoint a,
 //    [self addChild:sprite];
 //}
 
+#pragma mark - Update logic
+
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     beatLabel.text = [BMMusicPlayer sharedInstance].currentBeatString;
@@ -164,43 +168,22 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     [self moveTimelineView];
 }
 
-//- (CGFloat)backgroundPointPerSecond
-//
-//- (void)moveTimelineView
-//{
-//    CGPoint bgVelocity = CGPointMake(-BG_POINTS_PER_SEC, 0);
-//    CGPoint amtToMove = CGPointMultiplyScalar(bgVelocity, _dt);
-//    _bgLayer.position = CGPointAdd(_bgLayer.position, amtToMove);
-//    
-//    [_bgLayer enumerateChildNodesWithName:@"bg"
-//                               usingBlock:^(SKNode *node, BOOL *stop){
-//                                   SKSpriteNode * bg = (SKSpriteNode *) node;
-//                                   CGPoint bgScreenPos = [_bgLayer convertPoint:bg.position
-//                                                                         toNode:self];
-//                                   if (bgScreenPos.x <= -bg.size.width) {
-//                                       bg.position = CGPointMake(bg.position.x+bg.size.width*2,
-//                                                                 bg.position.y);
-//                                   }
-//                               }];
-//}
-
 - (void)moveTimelineView
 {
 //    CGPoint bgVelocity = CGPointMake(-BG_POINTS_PER_SEC, 0);
 //    CGPoint amtToMove = CGPointMultiplyScalar(bgVelocity, _dt);
 //    _scrollLayerNode.position = CGPointAdd(_scrollLayerNode.position, amtToMove);
-    CGFloat beatHeight = 25;
     CGFloat yValue = ([BMMusicPlayer sharedInstance].currentBeatFloat * beatHeight) * -1.0;
     _scrollLayerNode.position = CGPointMake(0, yValue);
     
     [_scrollLayerNode enumerateChildNodesWithName:@"bg"
                                usingBlock:^(SKNode *node, BOOL *stop)
     {
-        SKSpriteNode * bg = (SKSpriteNode *) node;
+        SKSpriteNode * bg = (SKSpriteNode*)node;
         CGPoint bgScreenPos = [_scrollLayerNode convertPoint:bg.position toNode:self];
-        if (bgScreenPos.y <= -bg.size.height)
+        if (bgScreenPos.y <= - bg.size.height)
         {
-           bg.position = CGPointMake(bg.position.x, bg.position.y+bg.size.height*2);
+           bg.position = CGPointMake(bg.position.x, bg.position.y + bg.size.height * 2);
         }
     }];
 }

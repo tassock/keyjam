@@ -43,6 +43,7 @@
 		08E9EB92181CE7010004B1C0 /* Trombone.aupreset in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB67181CE7010004B1C0 /* Trombone.aupreset */; };
 		08E9EBA0181CE8C00004B1C0 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EB9F181CE8C00004B1C0 /* Sounds */; };
 		08E9EBA6181D96570004B1C0 /* KJKeyboardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EBA5181D96570004B1C0 /* KJKeyboardNode.m */; };
+		08E9EBA8181E1FF90004B1C0 /* beatChart.png in Resources */ = {isa = PBXBuildFile; fileRef = 08E9EBA7181E1FF90004B1C0 /* beatChart.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		08E9EB9F181CE8C00004B1C0 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		08E9EBA4181D96570004B1C0 /* KJKeyboardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJKeyboardNode.h; sourceTree = "<group>"; };
 		08E9EBA5181D96570004B1C0 /* KJKeyboardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyboardNode.m; sourceTree = "<group>"; };
+		08E9EBA7181E1FF90004B1C0 /* beatChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beatChart.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 		080B6FB317DEE3FF00B11002 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				08E9EBA7181E1FF90004B1C0 /* beatChart.png */,
 				080B6FB417DEE3FF00B11002 /* KeyJam-Info.plist */,
 				080B6FB517DEE3FF00B11002 /* InfoPlist.strings */,
 				080B6FB817DEE3FF00B11002 /* main.m */,
@@ -388,6 +391,7 @@
 				08E9EB8B181CE7010004B1C0 /* CarntSleepBassline.mid in Resources */,
 				080B6FB717DEE3FF00B11002 /* InfoPlist.strings in Resources */,
 				08E9EB92181CE7010004B1C0 /* Trombone.aupreset in Resources */,
+				08E9EBA8181E1FF90004B1C0 /* beatChart.png in Resources */,
 				080B6FBD17DEE3FF00B11002 /* Credits.rtf in Resources */,
 				080B6FBF17DEE3FF00B11002 /* MainMenu.xib in Resources */,
 			);

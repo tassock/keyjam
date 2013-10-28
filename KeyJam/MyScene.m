@@ -13,10 +13,21 @@
 
 #import "BMMusicPlayer.h"
 
+static inline CGPoint CGPointAdd(const CGPoint a,
+                                 const CGPoint b)
+{
+    return CGPointMake(a.x + b.x, a.y + b.y);
+}
+
 @interface MyScene ()
 {
     SKLabelNode *beatLabel;
     KJKeyboardNode *keyboardNode;
+    NSTimeInterval _lastUpdateTime;
+    NSTimeInterval _dt;
+    CGFloat hudHeight;
+    CGFloat timelineHeight;
+    CGFloat keyboardHeight;
 }
 @property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
 @property (nonatomic, strong, readwrite) SKNode *scrollLayerNode;
@@ -28,12 +39,14 @@
 - (void)setupSceneLayers
 {
     _hudLayerNode = [SKNode node];
+    _hudLayerNode.zPosition = 100;
     [self addChild:_hudLayerNode];
     
     _scrollLayerNode = [SKNode node];
     [self addChild:_scrollLayerNode];
     
     _keyboardLayerNode = [SKNode node];
+    _keyboardLayerNode.zPosition = 100;
     [self addChild:_keyboardLayerNode];
 }
 
@@ -43,35 +56,36 @@
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Myriad Pro"];
-        
-        myLabel.text = @"Key Jam";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];
+        hudHeight = 45;
+        keyboardHeight = 240;
+        timelineHeight = self.size.height - hudHeight - keyboardHeight;
         
         [self setupSceneLayers];
-        [self setupHUD];
-        
-        keyboardNode = [[KJKeyboardNode alloc] initWithSize:CGSizeMake(self.size.width, 300)];
-        keyboardNode.position = CGPointZero;
-        keyboardNode.anchorPoint = CGPointZero;
-        [[BMMidiManager sharedInstance] addListener:[KJKeyboardManager sharedManager]];
-        [_keyboardLayerNode addChild:keyboardNode];
+        [self setUpHUD];
+        [self setUpScrollLayer];
+        [self setUpKeyboard];
     }
     return self;
 }
 
-- (void)setupHUD
+- (void)setUpScrollLayer
+{
+    for (int i = 0; i < 2; i++) {
+        SKSpriteNode * bg = [SKSpriteNode spriteNodeWithImageNamed:@"beatChart"];
+        bg.anchorPoint = CGPointZero;
+        bg.position = CGPointMake(0, keyboardHeight + (i * bg.size.height));
+        bg.name = @"bg";
+        [_scrollLayerNode addChild:bg];
+    }
+}
+
+- (void)setUpHUD
 {
     // background
-    int barHeight = 45;
-    CGSize backgroundSize = CGSizeMake(self.size.width, barHeight);
+    CGSize backgroundSize = CGSizeMake(self.size.width, hudHeight);
     SKColor *backgroundColor = [SKColor colorWithRed:0 green:0 blue:0.05 alpha:1.0];
     SKSpriteNode *hudBarBackground = [SKSpriteNode spriteNodeWithColor:backgroundColor size:backgroundSize];
-    hudBarBackground.position = CGPointMake(0, self.size.height - barHeight);
+    hudBarBackground.position = CGPointMake(0, self.size.height - hudHeight);
     hudBarBackground.anchorPoint = CGPointZero;
     [_hudLayerNode addChild:hudBarBackground];
     
@@ -85,6 +99,15 @@
     beatLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
     beatLabel.position = CGPointMake(self.size.width / 2, self.size.height - beatLabel.frame.size.height + 3);
     [_hudLayerNode addChild:beatLabel];
+}
+
+- (void)setUpKeyboard
+{
+    keyboardNode = [[KJKeyboardNode alloc] initWithSize:CGSizeMake(self.size.width, keyboardHeight)];
+    keyboardNode.position = CGPointZero;
+    keyboardNode.anchorPoint = CGPointZero;
+    [[BMMidiManager sharedInstance] addListener:[KJKeyboardManager sharedManager]];
+    [_keyboardLayerNode addChild:keyboardNode];
 }
 
 -(void)keyDown:(NSEvent *)theEvent
@@ -107,9 +130,6 @@
         default:
             break;
     }
-    
-//    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:theEvent.keyCode];
-//    [keyModel noteOn];
 }
 
 //-(void)mouseDown:(NSEvent *)theEvent {
@@ -132,6 +152,57 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     beatLabel.text = [BMMusicPlayer sharedInstance].currentBeatString;
+//    beatLabel.text = [NSString stringWithFormat:@"%f", [BMMusicPlayer sharedInstance].currentBeatFloat];
+    
+    if (_lastUpdateTime) {
+        _dt = currentTime - _lastUpdateTime;
+    } else {
+        _dt = 0;
+    }
+    _lastUpdateTime = currentTime;
+    
+    [self moveTimelineView];
+}
+
+//- (CGFloat)backgroundPointPerSecond
+//
+//- (void)moveTimelineView
+//{
+//    CGPoint bgVelocity = CGPointMake(-BG_POINTS_PER_SEC, 0);
+//    CGPoint amtToMove = CGPointMultiplyScalar(bgVelocity, _dt);
+//    _bgLayer.position = CGPointAdd(_bgLayer.position, amtToMove);
+//    
+//    [_bgLayer enumerateChildNodesWithName:@"bg"
+//                               usingBlock:^(SKNode *node, BOOL *stop){
+//                                   SKSpriteNode * bg = (SKSpriteNode *) node;
+//                                   CGPoint bgScreenPos = [_bgLayer convertPoint:bg.position
+//                                                                         toNode:self];
+//                                   if (bgScreenPos.x <= -bg.size.width) {
+//                                       bg.position = CGPointMake(bg.position.x+bg.size.width*2,
+//                                                                 bg.position.y);
+//                                   }
+//                               }];
+//}
+
+- (void)moveTimelineView
+{
+//    CGPoint bgVelocity = CGPointMake(-BG_POINTS_PER_SEC, 0);
+//    CGPoint amtToMove = CGPointMultiplyScalar(bgVelocity, _dt);
+//    _scrollLayerNode.position = CGPointAdd(_scrollLayerNode.position, amtToMove);
+    CGFloat beatHeight = 25;
+    CGFloat yValue = ([BMMusicPlayer sharedInstance].currentBeatFloat * beatHeight) * -1.0;
+    _scrollLayerNode.position = CGPointMake(0, yValue);
+    
+    [_scrollLayerNode enumerateChildNodesWithName:@"bg"
+                               usingBlock:^(SKNode *node, BOOL *stop)
+    {
+        SKSpriteNode * bg = (SKSpriteNode *) node;
+        CGPoint bgScreenPos = [_scrollLayerNode convertPoint:bg.position toNode:self];
+        if (bgScreenPos.y <= -bg.size.height)
+        {
+           bg.position = CGPointMake(bg.position.x, bg.position.y+bg.size.height*2);
+        }
+    }];
 }
 
 @end

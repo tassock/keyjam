@@ -78,4 +78,18 @@
     [[self keyModelForNoteNumber:note] noteOff];
 }
 
+#pragma mark - MusicSequence handling
+
+// creates a KJScheduledNote with a given BMNoteEvent. KJScheduledNote records actual note on note off
+- (void)addScheduledNoteEvent:(BMNoteEvent*)noteEvent
+{
+    
+}
+
+// Identifies KJScheduledNotes ended past a given beat, evaluates and removes them
+- (void)evaluateNotesEndedAtBeat:(Float64)beat
+{
+    
+}
+
 @end

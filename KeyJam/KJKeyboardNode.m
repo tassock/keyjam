@@ -26,7 +26,7 @@
     NSRange noteRange = [KJKeyboardManager sharedManager].noteRange;
     long keyCount = [KJKeyboardManager sharedManager].majorKeyCount;
     int keyWidth = self.frame.size.width / (CGFloat)keyCount;
-    int keyHeight = keyWidth * 2;
+    int keyHeight = (self.size.height / 2) - 2;
     CGFloat spaceBetweenKeys = 8.0;
     CGFloat keyRadius = 4.0;
     CGFloat majorX = 0;

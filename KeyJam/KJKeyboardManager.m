@@ -40,7 +40,7 @@
 - (KJKeyModel*)keyModelForNoteNumber:(UInt32)noteNumber
 {
     UInt32 noteIndex = (int)noteNumber - (int)_noteRange.location;
-    NSLog(@"noteNumber %u", noteNumber);
+    // NSLog(@"noteNumber %u", noteNumber);
     if (noteIndex < _noteRange.length)
     {
         return [_keyModels objectAtIndex:noteIndex];
@@ -83,7 +83,9 @@
 // creates a KJScheduledNote with a given BMNoteEvent. KJScheduledNote records actual note on note off
 - (void)addScheduledNoteEvent:(BMNoteEvent*)noteEvent
 {
-    
+    KJScheduledNote *scheduledNote = [[KJScheduledNote alloc] init];
+    scheduledNote.noteEvent = noteEvent;
+    if (_timelineNode) [_timelineNode addScheduledNote:scheduledNote];
 }
 
 // Identifies KJScheduledNotes ended past a given beat, evaluates and removes them

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BMMidiManager.h"
 #import "BMNoteEvent.h"
+#import "KJScheduledNote.h"
+#import "KJTimelineNode.h"
 
 @class KJKeyModel;
 
@@ -16,6 +18,7 @@
 @property (nonatomic, strong, readonly)NSArray *keyModels;
 @property (nonatomic, assign, readonly) NSInteger majorKeyCount;
 @property (nonatomic, assign, readwrite) NSRange noteRange;
+@property (nonatomic, strong, readwrite) KJTimelineNode *timelineNode;
 
 + (instancetype)sharedManager;
 - (KJKeyModel*)keyModelForNoteNumber:(UInt32)noteNumber;
@@ -33,15 +36,4 @@
 // finds the next scheduled KJScheduledNote and sets noteOffBeat to the current beat
 // Calls noteOff for corresponding KJKeyModel to update UI
 - (void)noteOffWithNote:(UInt32)note;
-@end
-
-@interface KJMusicPlayerManager
-// calls addScheduledNoteEvent for each sprite added to timeline
-// calls evaluateNotesEndedAtBeat: when sprites exit the timeline
-@end
-
-@interface KJScheduledNote : NSObject
-@property (nonatomic, readwrite, strong) BMNoteEvent *scheduledNote;
-@property (nonatomic, readwrite, assign) Float64  noteOnBeat;
-@property (nonatomic, readwrite, assign) Float64  noteOffBeat;
 @end

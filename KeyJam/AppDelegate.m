@@ -17,6 +17,7 @@
 #import "BMDistortionUnit.h"
 #import "BMMidiManager.h"
 #import "BMMusicPlayer.h"
+#import "KJMusicPlayerManager.h"
 
 @implementation AppDelegate
 
@@ -66,10 +67,7 @@
     [[BMMidiManager sharedInstance] setUp];
     [[BMMidiManager sharedInstance] addListener:sampler2];
     
-    BMMusicPlayer *musicPlayer = [BMMusicPlayer sharedInstance];
-    [musicPlayer loadSequenceFromMidiFile:@"CarntSleepBassline"];
-    musicPlayer.currentTempo = 70.0;
-    [musicPlayer noteEventsOnOrAfterBeat:0 beforeBeat:32];
+    [[KJMusicPlayerManager sharedManager] setUp];
 }
 
 @end

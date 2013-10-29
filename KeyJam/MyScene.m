@@ -10,7 +10,8 @@
 #import "KJKeyboardManager.h"
 #import "KJKeyModel.h"
 #import "KJKeyboardNode.h"
-
+#import "KJMusicPlayerManager.h"
+#import "KJTimelineNode.h"
 #import "BMMusicPlayer.h"
 
 static inline CGPoint CGPointAdd(const CGPoint a,
@@ -31,8 +32,9 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     CGFloat beatHeight;
 }
 @property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
-@property (nonatomic, strong, readwrite) SKNode *scrollLayerNode;
+@property (nonatomic, strong, readwrite) KJTimelineNode *timelineLayerNode;
 @property (nonatomic, strong, readwrite) SKNode *keyboardLayerNode;
+@property (nonatomic, assign, readwrite) NSUInteger currentBeatInteger;
 @end
 
 @implementation MyScene
@@ -43,8 +45,9 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     _hudLayerNode.zPosition = 100;
     [self addChild:_hudLayerNode];
     
-    _scrollLayerNode = [SKNode node];
-    [self addChild:_scrollLayerNode];
+    _timelineLayerNode = [KJTimelineNode node];
+    _timelineLayerNode.beatHeight = 100;
+    [self addChild:_timelineLayerNode];
     
     _keyboardLayerNode = [SKNode node];
     _keyboardLayerNode.zPosition = 100;
@@ -64,21 +67,14 @@ static inline CGPoint CGPointAdd(const CGPoint a,
         
         [self setupSceneLayers];
         [self setUpHUD];
-        [self setUpScrollLayer];
+        [_timelineLayerNode setUp];
         [self setUpKeyboard];
+        
+        self.currentBeatInteger = 0;
+        [KJKeyboardManager sharedManager].timelineNode = _timelineLayerNode;
+        [KJMusicPlayerManager sharedManager].beatsToPreLoad = 6;
     }
     return self;
-}
-
-- (void)setUpScrollLayer
-{
-    for (int i = 0; i < 2; i++) {
-        SKSpriteNode * bg = [SKSpriteNode spriteNodeWithImageNamed:@"beatChart"];
-        bg.anchorPoint = CGPointZero;
-        bg.position = CGPointMake(0, keyboardHeight + (i * bg.size.height));
-        bg.name = @"bg";
-        [_scrollLayerNode addChild:bg];
-    }
 }
 
 - (void)setUpHUD
@@ -155,8 +151,8 @@ static inline CGPoint CGPointAdd(const CGPoint a,
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    beatLabel.text = [BMMusicPlayer sharedInstance].currentBeatString;
-//    beatLabel.text = [NSString stringWithFormat:@"%f", [BMMusicPlayer sharedInstance].currentBeatFloat];
+//    beatLabel.text = [BMMusicPlayer sharedInstance].currentBeatString;
+    beatLabel.text = [NSString stringWithFormat:@"%f", [BMMusicPlayer sharedInstance].currentBeatFloat];
     
     if (_lastUpdateTime) {
         _dt = currentTime - _lastUpdateTime;
@@ -165,27 +161,21 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     }
     _lastUpdateTime = currentTime;
     
-    [self moveTimelineView];
+    // check currentWholeBeat
+    Float64 currentBeatFloat = [BMMusicPlayer sharedInstance].currentBeatFloat;
+    if (_currentBeatInteger < (NSUInteger)currentBeatFloat)
+    {
+        self.currentBeatInteger = (NSUInteger)currentBeatFloat;
+    }
+    
+    [_timelineLayerNode updateToBeat:currentBeatFloat];
 }
 
-- (void)moveTimelineView
+- (void)setCurrentBeatInteger:(NSUInteger)integer
 {
-//    CGPoint bgVelocity = CGPointMake(-BG_POINTS_PER_SEC, 0);
-//    CGPoint amtToMove = CGPointMultiplyScalar(bgVelocity, _dt);
-//    _scrollLayerNode.position = CGPointAdd(_scrollLayerNode.position, amtToMove);
-    CGFloat yValue = ([BMMusicPlayer sharedInstance].currentBeatFloat * beatHeight) * -1.0;
-    _scrollLayerNode.position = CGPointMake(0, yValue);
-    
-    [_scrollLayerNode enumerateChildNodesWithName:@"bg"
-                               usingBlock:^(SKNode *node, BOOL *stop)
-    {
-        SKSpriteNode * bg = (SKSpriteNode*)node;
-        CGPoint bgScreenPos = [_scrollLayerNode convertPoint:bg.position toNode:self];
-        if (bgScreenPos.y <= - bg.size.height)
-        {
-           bg.position = CGPointMake(bg.position.x, bg.position.y + bg.size.height * 2);
-        }
-    }];
+    _currentBeatInteger = integer;
+    NSLog(@"currentWholeBeat %lu", (unsigned long)_currentBeatInteger);
+    [[KJMusicPlayerManager sharedManager] updateForBeat:_currentBeatInteger];
 }
 
 @end

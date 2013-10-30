@@ -25,11 +25,14 @@ typedef enum {
 
 @interface KJKeyModel : NSObject
 @property (nonatomic, readonly) KJKeyModelKey keyEnum;
-@property (nonatomic, readonly) BOOL isMajor;
-@property NSInteger noteNumber;
+@property (nonatomic, readonly, assign) BOOL isMajor;
+@property (nonatomic, readonly, assign) NSInteger noteNumber;
+@property (nonatomic, readonly, assign) NSUInteger octave;
 @property SKShapeNode *shapeNode;
 - (void)noteOn;
 - (void)noteOff;
 + (instancetype)keyModelWithNoteNumber:(NSUInteger)noteNumber;
 - (SKColor*)defaultColor;
++ (NSArray*)minorKeyNumbers;
++ (NSArray*)majorKeyNumbers;
 @end

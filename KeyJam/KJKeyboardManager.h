@@ -20,6 +20,9 @@
 @property (nonatomic, assign, readwrite) NSRange noteRange;
 @property (nonatomic, strong, readwrite) KJTimelineNode *timelineNode;
 
+// width of keys in UI, in points
+@property (nonatomic, assign, readwrite) NSUInteger keyWidth;
+
 + (instancetype)sharedManager;
 - (KJKeyModel*)keyModelForNoteNumber:(UInt32)noteNumber;
 
@@ -36,4 +39,7 @@
 // finds the next scheduled KJScheduledNote and sets noteOffBeat to the current beat
 // Calls noteOff for corresponding KJKeyModel to update UI
 - (void)noteOffWithNote:(UInt32)note;
+
+// the x value (points) that ui elements should be for a given key model
+- (CGFloat)xOffsetForKeyModel:(KJKeyModel*)keyModel;
 @end

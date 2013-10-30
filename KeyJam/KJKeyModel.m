@@ -8,6 +8,10 @@
 
 #import "KJKeyModel.h"
 
+@interface KJKeyModel ()
+@property (nonatomic, readwrite, assign) NSInteger noteNumber;
+@end
+
 @implementation KJKeyModel
 
 + (instancetype)keyModelWithNoteNumber:(NSUInteger)noteNumber
@@ -18,6 +22,23 @@
         model.noteNumber = noteNumber;
     }
     return model;
+}
+
+// could make this static for performance
++ (NSArray*)minorKeyNumbers
+{
+    return @[@1, @3, @6, @8, @10];
+}
+
+// could make this static for performance
++ (NSArray*)majorKeyNumbers
+{
+    return @[@0, @2, @4, @5, @7, @9, @11];
+}
+
+- (NSUInteger)octave
+{
+    return _noteNumber / 12;
 }
 
 - (void)noteOn
@@ -33,8 +54,7 @@
 - (BOOL)isMajor
 {
     int keyInt = _noteNumber % 12;
-    NSArray *majorKeys = @[@0, @2, @4, @5, @7, @9, @11];
-    return [majorKeys containsObject:[NSNumber numberWithInt:keyInt]];
+    return [[KJKeyModel majorKeyNumbers] containsObject:[NSNumber numberWithInt:keyInt]];
 }
 
 - (KJKeyModelKey)keyEnum

@@ -94,4 +94,27 @@
     
 }
 
+#pragma mark - UI helpers
+
+// the x value (points) that ui elements should be for a given key model
+- (CGFloat)xOffsetForKeyModel:(KJKeyModel*)keyModel
+{
+    CGFloat indexOfKey;
+    NSUInteger numberInOctave = keyModel.noteNumber % 12;
+    if (keyModel.isMajor)
+    {
+        indexOfKey = [[KJKeyModel majorKeyNumbers] indexOfObject:[NSNumber numberWithInteger:numberInOctave]];
+    }
+    else
+    {
+        indexOfKey = [[KJKeyModel minorKeyNumbers] indexOfObject:[NSNumber numberWithInteger:numberInOctave]];
+        if (indexOfKey > 1) indexOfKey ++; // +1 for the gap after the first two minor keys
+        indexOfKey += 0.5; // indent minor key half a width
+    }
+    NSUInteger octavesFromOrigin = keyModel.octave - (_noteRange.location / 12);
+    indexOfKey += (octavesFromOrigin * 7);
+    CGFloat xOffset = indexOfKey * _keyWidth;
+    return xOffset;
+}
+
 @end

@@ -15,14 +15,14 @@
 
 - (void)setUp
 {
-    for (int i = 0; i < 2; i++) {
+//    for (int i = 0; i < 2; i++) {
 //        SKSpriteNode * bg = [SKSpriteNode spriteNodeWithImageNamed:@"beatChart"];
-        SKSpriteNode *bg = [SKSpriteNode node];
-        bg.anchorPoint = CGPointZero;
-        bg.position = CGPointMake(0, 240 + (i * bg.size.height)); // get hardcoded value out of here!
-        bg.name = @"bg";
-        [self addChild:bg];
-    }
+//        bg.color = [SKColor blackColor];
+//        bg.anchorPoint = CGPointZero;
+//        bg.position = CGPointMake(0, 240 + (i * bg.size.height)); // get hardcoded value out of here!
+//        bg.name = @"bg";
+//        [self addChild:bg];
+//    }
 }
 
 - (void)updateToBeat:(CGFloat)currentBeatFloat;
@@ -33,16 +33,16 @@
     CGFloat yValue = ([BMMusicPlayer sharedInstance].currentBeatFloat * _beatHeight) * -1.0;
     self.position = CGPointMake(0, yValue);
     
-    [self enumerateChildNodesWithName:@"bg"
-                                       usingBlock:^(SKNode *node, BOOL *stop)
-     {
-         SKSpriteNode * bg = (SKSpriteNode*)node;
-         CGPoint bgScreenPos = [self convertPoint:bg.position toNode:self];
-         if (bgScreenPos.y <= - bg.size.height)
-         {
-             bg.position = CGPointMake(bg.position.x, bg.position.y + bg.size.height * 2);
-         }
-     }];
+//    [self enumerateChildNodesWithName:@"bg"
+//                                       usingBlock:^(SKNode *node, BOOL *stop)
+//     {
+//         SKSpriteNode * bg = (SKSpriteNode*)node;
+//         CGPoint bgScreenPos = [self convertPoint:bg.position toNode:self];
+//         if (bgScreenPos.y <= - bg.size.height)
+//         {
+//             bg.position = CGPointMake(bg.position.x, bg.position.y + bg.size.height * 2);
+//         }
+//     }];
 }
 
 - (void)addScheduledNote:(KJScheduledNote*)scheduledNote
@@ -57,6 +57,7 @@
     SKShapeNode *shape = [[SKShapeNode alloc] init];
     shape.path = CGPathCreateWithRoundedRect(CGRectMake(xOffset, yOffset, [KJKeyboardManager sharedManager].keyWidth, height), 0, 0, NULL);
     shape.fillColor = [SKColor blueColor];
+    shape.strokeColor = [SKColor grayColor];
     [self addChild:shape];
 }
 

@@ -17,7 +17,7 @@
 
 - (id)initWithSize:(CGSize)size
 {
-    if (self = [super initWithColor:[SKColor grayColor] size:size])
+    if (self = [super initWithColor:[SKColor darkGrayColor] size:size])
     {
         [self setUp];
     }

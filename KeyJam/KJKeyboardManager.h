@@ -24,7 +24,7 @@
 @property (nonatomic, assign, readwrite) NSUInteger keyWidth;
 
 + (instancetype)sharedManager;
-- (KJKeyModel*)keyModelForNoteNumber:(UInt32)noteNumber;
+- (KJKeyModel*)keyModelForNoteNumber:(NSUInteger)noteNumber;
 
 // creates a KJScheduledNote with a given BMNoteEvent. KJScheduledNote records actual note on note off
 - (void)addScheduledNoteEvent:(BMNoteEvent*)noteEvent;

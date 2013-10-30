@@ -29,7 +29,6 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     CGFloat hudHeight;
     CGFloat timelineHeight;
     CGFloat keyboardHeight;
-    CGFloat beatHeight;
 }
 @property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
 @property (nonatomic, strong, readwrite) KJTimelineNode *timelineLayerNode;
@@ -63,16 +62,15 @@ static inline CGPoint CGPointAdd(const CGPoint a,
         hudHeight = 45;
         keyboardHeight = 240;
         timelineHeight = self.size.height - hudHeight - keyboardHeight;
-        beatHeight = 25;
         
         [self setupSceneLayers];
         [self setUpHUD];
         [_timelineLayerNode setUp];
         [self setUpKeyboard];
         
-        self.currentBeatInteger = 0;
         [KJKeyboardManager sharedManager].timelineNode = _timelineLayerNode;
         [KJMusicPlayerManager sharedManager].beatsToPreLoad = 6;
+        self.currentBeatInteger = 0;
     }
     return self;
 }

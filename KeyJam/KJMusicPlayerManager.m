@@ -12,7 +12,7 @@
 #import "KJKeyboardManager.h"
 
 @interface KJMusicPlayerManager ()
-@property (nonatomic, assign, readwrite) NSUInteger beatsLoaded;
+@property (nonatomic, assign, readwrite) NSInteger beatsLoaded;
 @end
 
 @implementation KJMusicPlayerManager
@@ -34,12 +34,13 @@
     [musicPlayer noteEventsOnOrAfterBeat:0 beforeBeat:32]; // uncessary here I think
 }
 
-- (void)updateForBeat:(NSUInteger)currentBeat
+- (void)updateForBeat:(NSInteger)currentBeat
 {
     // call KJKeyboardManager addScheduledNoteEvent: for each sprite added to timeline
-    while (currentBeat < _beatsLoaded + _beatsToPreLoad) {
-        Float64 afterBeat = currentBeat + _beatsLoaded;
+    while (currentBeat > _beatsLoaded - _beatsToPreLoad) {
+        Float64 afterBeat = _beatsLoaded;
         Float64 beforeBeat = afterBeat + 1;
+        // NSLog(@"FETCHING afterBeat %f, beforeBeat %f", afterBeat, beforeBeat);
         NSArray *noteEvents = [[BMMusicPlayer sharedInstance] noteEventsOnOrAfterBeat:afterBeat beforeBeat:beforeBeat];
         for (BMNoteEvent *noteEvent in noteEvents)
         {

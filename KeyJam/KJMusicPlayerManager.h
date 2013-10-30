@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface KJMusicPlayerManager : NSObject
-@property (nonatomic, assign, readonly) NSUInteger beatsLoaded;
-@property (nonatomic, assign, readwrite) NSUInteger beatsToPreLoad;
+@property (nonatomic, assign, readonly) NSInteger beatsLoaded;
+@property (nonatomic, assign, readwrite) NSInteger beatsToPreLoad;
 
 + (instancetype)sharedManager;
 - (void)setUp;
-- (void)updateForBeat:(NSUInteger)currentBeat;
+- (void)updateForBeat:(NSInteger)currentBeat;
 
 @end

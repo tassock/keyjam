@@ -9,13 +9,15 @@
 #import "KJTimelineNode.h"
 #import "BMMusicPlayer.h"
 #import "KJScheduledNote.h"
+#import "KJKeyboardManager.h"
 
 @implementation KJTimelineNode
 
 - (void)setUp
 {
     for (int i = 0; i < 2; i++) {
-        SKSpriteNode * bg = [SKSpriteNode spriteNodeWithImageNamed:@"beatChart"];
+//        SKSpriteNode * bg = [SKSpriteNode spriteNodeWithImageNamed:@"beatChart"];
+        SKSpriteNode *bg = [SKSpriteNode node];
         bg.anchorPoint = CGPointZero;
         bg.position = CGPointMake(0, 240 + (i * bg.size.height)); // get hardcoded value out of here!
         bg.name = @"bg";
@@ -45,7 +47,17 @@
 
 - (void)addScheduledNote:(KJScheduledNote*)scheduledNote
 {
+    NSUInteger noteNumber = scheduledNote.noteEvent.note;
+    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:noteNumber];
+    CGFloat xOffset = [[KJKeyboardManager sharedManager] xOffsetForKeyModel:keyModel];
+    CGFloat yOffset = (scheduledNote.noteEvent.beat * _beatHeight * 2) + 240;
+    CGFloat height = scheduledNote.noteEvent.duration * _beatHeight * 2;
+    // NSLog(@"Add note %@ (%u) at beat %f", keyModel, scheduledNote.noteEvent.note, scheduledNote.noteEvent.beat);
     
+    SKShapeNode *shape = [[SKShapeNode alloc] init];
+    shape.path = CGPathCreateWithRoundedRect(CGRectMake(xOffset, yOffset, [KJKeyboardManager sharedManager].keyWidth, height), 0, 0, NULL);
+    shape.fillColor = [SKColor blueColor];
+    [self addChild:shape];
 }
 
 @end

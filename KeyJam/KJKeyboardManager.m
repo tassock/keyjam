@@ -37,7 +37,7 @@
     self.keyModels = [NSArray arrayWithArray:mutableKeys];
 }
 
-- (KJKeyModel*)keyModelForNoteNumber:(UInt32)noteNumber
+- (KJKeyModel*)keyModelForNoteNumber:(NSUInteger)noteNumber
 {
     UInt32 noteIndex = (int)noteNumber - (int)_noteRange.location;
     // NSLog(@"noteNumber %u", noteNumber);

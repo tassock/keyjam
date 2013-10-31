@@ -27,6 +27,9 @@
 		08A2021F17E6E2E400C50C18 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021C17E6E2E400C50C18 /* AudioUnit.framework */; };
 		08A2022017E6E2E400C50C18 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2021D17E6E2E400C50C18 /* CoreAudio.framework */; };
 		08A2022217E6E2F100C50C18 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2022117E6E2F100C50C18 /* CoreMIDI.framework */; };
+		08B90001182318B2001214CB /* KJScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B90000182318B2001214CB /* KJScoreManager.m */; };
+		08B9000418231B82001214CB /* KJHudNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B9000318231B82001214CB /* KJHudNode.m */; };
+		08B9FFFE182315AE001214CB /* c-scale.mid in Resources */ = {isa = PBXBuildFile; fileRef = 08B9FFFD182315AE001214CB /* c-scale.mid */; };
 		08E9EB7E181CE7010004B1C0 /* BMAudioUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB45181CE7010004B1C0 /* BMAudioUnit.m */; };
 		08E9EB7F181CE7010004B1C0 /* BMDistortionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB47181CE7010004B1C0 /* BMDistortionUnit.m */; };
 		08E9EB80181CE7010004B1C0 /* BMIOUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB49181CE7010004B1C0 /* BMIOUnit.m */; };
@@ -91,6 +94,11 @@
 		08A2021C17E6E2E400C50C18 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		08A2021D17E6E2E400C50C18 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		08A2022117E6E2F100C50C18 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		08B90000182318B2001214CB /* KJScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJScoreManager.m; sourceTree = "<group>"; };
+		08B9000218231B82001214CB /* KJHudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJHudNode.h; sourceTree = "<group>"; };
+		08B9000318231B82001214CB /* KJHudNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJHudNode.m; sourceTree = "<group>"; };
+		08B9FFFD182315AE001214CB /* c-scale.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "c-scale.mid"; sourceTree = "<group>"; };
+		08B9FFFF182318B2001214CB /* KJScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJScoreManager.h; sourceTree = "<group>"; };
 		08E9EB44181CE7010004B1C0 /* BMAudioUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAudioUnit.h; sourceTree = "<group>"; };
 		08E9EB45181CE7010004B1C0 /* BMAudioUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAudioUnit.m; sourceTree = "<group>"; };
 		08E9EB46181CE7010004B1C0 /* BMDistortionUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMDistortionUnit.h; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 				080B6FA917DEE3FF00B11002 /* Frameworks */,
 				080B6FA817DEE3FF00B11002 /* Products */,
 				08E9EB17181CE7000004B1C0 /* externals */,
+				08B9FFFB182315AE001214CB /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,6 +232,10 @@
 				08E9EBAD181F85E50004B1C0 /* KJScheduledNote.m */,
 				08E9EBAF181F8A760004B1C0 /* KJTimelineNode.h */,
 				08E9EBB0181F8A760004B1C0 /* KJTimelineNode.m */,
+				08B9FFFF182318B2001214CB /* KJScoreManager.h */,
+				08B90000182318B2001214CB /* KJScoreManager.m */,
+				08B9000218231B82001214CB /* KJHudNode.h */,
+				08B9000318231B82001214CB /* KJHudNode.m */,
 			);
 			path = KeyJam;
 			sourceTree = "<group>";
@@ -256,6 +269,22 @@
 				080B6FD717DEE3FF00B11002 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08B9FFFB182315AE001214CB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				08B9FFFC182315AE001214CB /* MIDI */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		08B9FFFC182315AE001214CB /* MIDI */ = {
+			isa = PBXGroup;
+			children = (
+				08B9FFFD182315AE001214CB /* c-scale.mid */,
+			);
+			path = MIDI;
 			sourceTree = "<group>";
 		};
 		08E9EB17181CE7000004B1C0 /* externals */ = {
@@ -401,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08E9EBA0181CE8C00004B1C0 /* Sounds in Resources */,
+				08B9FFFE182315AE001214CB /* c-scale.mid in Resources */,
 				080B6FC717DEE3FF00B11002 /* Spaceship.png in Resources */,
 				080B6FC917DEE3FF00B11002 /* Images.xcassets in Resources */,
 				08E9EB8B181CE7010004B1C0 /* CarntSleepBassline.mid in Resources */,
@@ -439,6 +469,7 @@
 				08E9EB84181CE7010004B1C0 /* BMAudio.m in Sources */,
 				080B6FC417DEE3FF00B11002 /* AppDelegate.m in Sources */,
 				08E9EB82181CE7010004B1C0 /* BMReverbUnit.m in Sources */,
+				08B9000418231B82001214CB /* KJHudNode.m in Sources */,
 				08E9EB7E181CE7010004B1C0 /* BMAudioUnit.m in Sources */,
 				08E9EB80181CE7010004B1C0 /* BMIOUnit.m in Sources */,
 				08E9EBAB181F7D000004B1C0 /* KJMusicPlayerManager.m in Sources */,
@@ -446,6 +477,7 @@
 				08E9EB89181CE7010004B1C0 /* BMNoteEvent.m in Sources */,
 				08E9EB86181CE7010004B1C0 /* BMAudioTrack.m in Sources */,
 				08E9EB87181CE7010004B1C0 /* BMMidiManager.m in Sources */,
+				08B90001182318B2001214CB /* KJScoreManager.m in Sources */,
 				08E9EB88181CE7010004B1C0 /* BMMusicPlayer.m in Sources */,
 				08E9EBA6181D96570004B1C0 /* KJKeyboardNode.m in Sources */,
 			);

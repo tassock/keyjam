@@ -10,9 +10,12 @@
 #import "BMMusicPlayer.h"
 #import "BMNoteEvent.h"
 #import "KJKeyboardManager.h"
+#import "KJKeyModel.h"
+#import "KJScoreManager.h"
 
 @interface KJMusicPlayerManager ()
 @property (nonatomic, assign, readwrite) NSInteger beatsLoaded;
+@property (nonatomic, strong, readwrite) NSMutableArray *scheduledNotes;
 @end
 
 @implementation KJMusicPlayerManager
@@ -29,9 +32,10 @@
 - (void)setUp
 {
     BMMusicPlayer *musicPlayer = [BMMusicPlayer sharedInstance];
-    [musicPlayer loadSequenceFromMidiFile:@"CarntSleepBassline"];
+    [musicPlayer loadSequenceFromMidiFile:@"c-scale"];
     musicPlayer.currentTempo = 70.0;
     [musicPlayer noteEventsOnOrAfterBeat:0 beforeBeat:32]; // uncessary here I think
+    self.scheduledNotes = [[NSMutableArray alloc] initWithCapacity:5];
 }
 
 - (void)updateForBeat:(NSInteger)currentBeat
@@ -44,12 +48,12 @@
         NSArray *noteEvents = [[BMMusicPlayer sharedInstance] noteEventsOnOrAfterBeat:afterBeat beforeBeat:beforeBeat];
         for (BMNoteEvent *noteEvent in noteEvents)
         {
-            [[KJKeyboardManager sharedManager] addScheduledNoteEvent:noteEvent];
+            [self addScheduledNoteEvent:noteEvent];
         }
         _beatsLoaded ++;
     }
     
-    [[KJKeyboardManager sharedManager] evaluateNotesEndedAtBeat:currentBeat];
+    [self evaluateNotesEndedAtBeat:currentBeat];
     
     // call KJKeyboardManager evaluateNotesEndedAtBeat: when sprites exit the timeline
     
@@ -64,4 +68,76 @@
     // empty out KJKeyboardManager's scheduled notes? Should that logic be here?
 }
 
+#pragma mark - BMMidiListener
+
+// finds the next scheduled KJScheduledNote and sets noteOnBeat to the current beat
+// Calls noteOn for corresponding KJKeyModel to update UI
+- (void)noteOnWithNote:(UInt32)note velocity:(UInt32)velocity
+{
+    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:note];
+    [keyModel noteOn];
+    
+    Float64 currentBeatFloat = [BMMusicPlayer sharedInstance].currentBeatFloat;
+    for (KJScheduledNote *scheduledNote in _scheduledNotes)
+    {
+        if (scheduledNote.noteNumber == note &&
+            scheduledNote.scheduledBeatStart <= currentBeatFloat &&
+            scheduledNote.scheduledBeatEnd >= currentBeatFloat &&
+            scheduledNote.metNoteOnTarget == NO)
+        {
+            scheduledNote.node.fillColor = [SKColor greenColor];
+            scheduledNote.noteOnBeat = currentBeatFloat;
+            scheduledNote.metNoteOnTarget = YES;
+            [[KJScoreManager sharedManager] incrementScore];
+            break;
+        }
+    }
+}
+
+// finds the next scheduled KJScheduledNote and sets noteOffBeat to the current beat
+- (void)noteOffWithNote:(UInt32)note
+{
+    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:note];
+    [keyModel noteOff];
+    
+    for (KJScheduledNote *scheduledNote in _scheduledNotes)
+    {
+        if (scheduledNote.noteNumber == note && !scheduledNote.noteOnBeat) // && scheduledNote.scheduledBeatEnd < currentBeat
+        {
+            scheduledNote.node.fillColor = [SKColor blueColor];
+            break;
+        }
+    }
+}
+
+#pragma mark - MusicSequence handling
+
+// creates a KJScheduledNote with a given BMNoteEvent. KJScheduledNote records actual note on note off
+- (void)addScheduledNoteEvent:(BMNoteEvent*)noteEvent
+{
+    KJScheduledNote *scheduledNote = [KJScheduledNote scheduledNoteWithEvent:noteEvent];
+    [_scheduledNotes addObject:scheduledNote];
+    if (_timelineNode) [_timelineNode addNodeForScheduledNote:scheduledNote];
+}
+
+// Identifies KJScheduledNotes ended past a given beat, evaluates score and removes node
+- (void)evaluateNotesEndedAtBeat:(Float64)beat
+{
+    NSMutableArray *notesToRemove = [[NSMutableArray alloc] initWithCapacity:5];
+    for (KJScheduledNote *scheduledNote in _scheduledNotes)
+    {
+        if (scheduledNote.scheduledBeatEnd < beat)
+        {
+            if (_timelineNode) [_timelineNode removeNodeForScheduledNote:scheduledNote];
+            [notesToRemove addObject:scheduledNote];
+        }
+    }
+    [_scheduledNotes removeObjectsInArray:notesToRemove];
+    
+    
+    // requires me to keep an internal array of scheduledNotes?
+    // could iterate through the first part of the array, but how do I know when to stop? A note could start later, but end sooner. I guess if I'm iterating through only the notes on screen, that's not a huge amount
+    // how do I clear out notes when I reset the sequence?
+    // I need a reference to the sprite node to remove it. I could add a node property to scheduled note, I guess. Should I really be doing this at the timeline node level?
+}
 @end

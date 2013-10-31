@@ -12,7 +12,9 @@
 #import "KJKeyboardNode.h"
 #import "KJMusicPlayerManager.h"
 #import "KJTimelineNode.h"
+#import "KJHudNode.h"
 #import "BMMusicPlayer.h"
+#import "KJScoreManager.h"
 
 static inline CGPoint CGPointAdd(const CGPoint a,
                                  const CGPoint b)
@@ -22,8 +24,8 @@ static inline CGPoint CGPointAdd(const CGPoint a,
 
 @interface MyScene ()
 {
-    SKLabelNode *beatLabel;
     KJKeyboardNode *keyboardNode;
+    KJHudNode *hudNode;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
     CGFloat hudHeight;
@@ -64,38 +66,19 @@ static inline CGPoint CGPointAdd(const CGPoint a,
         keyboardHeight = 240;
         timelineHeight = self.size.height - hudHeight - keyboardHeight;
         
+        // Set up keyboard manager with 25 note keyboard
+        [[KJKeyboardManager sharedManager] setNoteRange:NSMakeRange(48, 25)]; // move to sequence load for automatic range detection
+        
         [self setupSceneLayers];
         [self setUpHUD];
         [_timelineLayerNode setUp];
         [self setUpKeyboard];
         
-        [KJKeyboardManager sharedManager].timelineNode = _timelineLayerNode;
+        [KJMusicPlayerManager sharedManager].timelineNode = _timelineLayerNode;
         [KJMusicPlayerManager sharedManager].beatsToPreLoad = 6;
         self.currentBeatInteger = 0;
     }
     return self;
-}
-
-- (void)setUpHUD
-{
-    // background
-    CGSize backgroundSize = CGSizeMake(self.size.width, hudHeight);
-    SKColor *backgroundColor = [SKColor colorWithRed:0 green:0 blue:0.05 alpha:1.0];
-    SKSpriteNode *hudBarBackground = [SKSpriteNode spriteNodeWithColor:backgroundColor size:backgroundSize];
-    hudBarBackground.position = CGPointMake(0, self.size.height - hudHeight);
-    hudBarBackground.anchorPoint = CGPointZero;
-    [_hudLayerNode addChild:hudBarBackground];
-    
-    // Add buttons when I figure out how I want to do these. KoboldKit?
-    
-    // beat label
-    beatLabel = [SKLabelNode labelNodeWithFontNamed:@"Monaco"];
-    beatLabel.fontSize = 30.0;
-    beatLabel.text = @"1.1.1";
-    beatLabel.name = @"beatLabel";
-    beatLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-    beatLabel.position = CGPointMake(self.size.width / 2, self.size.height - beatLabel.frame.size.height + 3);
-    [_hudLayerNode addChild:beatLabel];
 }
 
 - (void)setUpKeyboard
@@ -103,8 +86,16 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     keyboardNode = [[KJKeyboardNode alloc] initWithSize:CGSizeMake(self.size.width, keyboardHeight)];
     keyboardNode.position = CGPointZero;
     keyboardNode.anchorPoint = CGPointZero;
-    [[BMMidiManager sharedInstance] addListener:[KJKeyboardManager sharedManager]];
+    [[BMMidiManager sharedInstance] addListener:[KJMusicPlayerManager sharedManager]];
     [_keyboardLayerNode addChild:keyboardNode];
+}
+
+- (void)setUpHUD
+{
+    hudNode = [[KJHudNode alloc] initWithSize:CGSizeMake(self.size.width, hudHeight)];
+    hudNode.position = CGPointMake(0, self.size.height - hudHeight);
+    hudNode.anchorPoint = CGPointZero;
+    [_hudLayerNode addChild:hudNode];
 }
 
 -(void)keyDown:(NSEvent *)theEvent
@@ -123,6 +114,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
             break;
         case 36: // return
             [[KJMusicPlayerManager sharedManager] reset];
+            [[KJScoreManager sharedManager] resetScore];
             self.currentBeatInteger = 0;
             
         default:
@@ -150,10 +142,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
 #pragma mark - Update logic
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-//    beatLabel.text = [BMMusicPlayer sharedInstance].currentBeatString;
-    beatLabel.text = [NSString stringWithFormat:@"%f", [BMMusicPlayer sharedInstance].currentBeatFloat];
-    
+
     if (_lastUpdateTime) {
         _dt = currentTime - _lastUpdateTime;
     } else {
@@ -169,6 +158,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     }
     
     [_timelineLayerNode updateToBeat:currentBeatFloat];
+    [hudNode updateToBeat:currentBeatFloat];
 }
 
 - (void)setCurrentBeatInteger:(NSUInteger)integer

@@ -85,13 +85,16 @@
 {
     KJScheduledNote *scheduledNote = [[KJScheduledNote alloc] init];
     scheduledNote.noteEvent = noteEvent;
-    if (_timelineNode) [_timelineNode addScheduledNote:scheduledNote];
+    if (_timelineNode) [_timelineNode addNodeForScheduledNote:scheduledNote];
 }
 
-// Identifies KJScheduledNotes ended past a given beat, evaluates and removes them
+// Identifies KJScheduledNotes ended past a given beat, evaluates score and removes node
 - (void)evaluateNotesEndedAtBeat:(Float64)beat
 {
-    
+    // requires me to keep an internal array of scheduledNotes?
+    // could iterate through the first part of the array, but how do I know when to stop? A note could start later, but end sooner. I guess if I'm iterating through only the notes on screen, that's not a huge amount
+    // how do I clear out notes when I reset the sequence?
+    // I need a reference to the sprite node to remove it. I could add a node property to scheduled note, I guess. Should I really be doing this at the timeline node level?
 }
 
 #pragma mark - UI helpers

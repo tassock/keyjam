@@ -14,5 +14,6 @@
 @property (nonatomic, assign, readwrite) CGFloat beatHeight;
 - (void)setUp;
 - (void)updateToBeat:(CGFloat)currentBeatFloat;
-- (void)addScheduledNote:(KJScheduledNote*)scheduledNote;
+- (void)addNodeForScheduledNote:(KJScheduledNote*)scheduledNote;
+- (void)removeNodeForScheduledNote:(KJScheduledNote*)scheduledNote;
 @end

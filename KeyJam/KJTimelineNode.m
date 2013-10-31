@@ -45,7 +45,7 @@
 //     }];
 }
 
-- (void)addScheduledNote:(KJScheduledNote*)scheduledNote
+- (void)addNodeForScheduledNote:(KJScheduledNote*)scheduledNote
 {
     NSUInteger noteNumber = scheduledNote.noteEvent.note;
     KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:noteNumber];
@@ -58,7 +58,14 @@
     shape.path = CGPathCreateWithRoundedRect(CGRectMake(xOffset, yOffset, [KJKeyboardManager sharedManager].keyWidth, height), 0, 0, NULL);
     shape.fillColor = [SKColor blueColor];
     shape.strokeColor = [SKColor grayColor];
+    scheduledNote.node = shape;
     [self addChild:shape];
+}
+
+- (void)removeNodeForScheduledNote:(KJScheduledNote*)scheduledNote
+{
+    [scheduledNote.node removeFromParent];
+    scheduledNote.node = nil; // dealloc node
 }
 
 @end

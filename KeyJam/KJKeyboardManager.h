@@ -40,6 +40,12 @@
 // Calls noteOff for corresponding KJKeyModel to update UI
 - (void)noteOffWithNote:(UInt32)note;
 
-// the x value (points) that ui elements should be for a given key model
+/**
+ *  the x value (points) that ui elements should be for a given key model
+ *
+ *  @param keyModel key model to base the measurement from
+ *
+ *  @return x value to be used in a CGRect with anchorPoint CGPointZero
+ */
 - (CGFloat)xOffsetForKeyModel:(KJKeyModel*)keyModel;
 @end

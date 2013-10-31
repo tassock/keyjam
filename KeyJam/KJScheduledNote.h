@@ -13,4 +13,5 @@
 @property (nonatomic, readwrite, strong) BMNoteEvent *noteEvent;
 @property (nonatomic, readwrite, assign) Float64  noteOnBeat;
 @property (nonatomic, readwrite, assign) Float64  noteOffBeat;
+@property (nonatomic, readwrite, strong) SKNode *node;
 @end

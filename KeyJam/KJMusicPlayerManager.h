@@ -15,5 +15,5 @@
 + (instancetype)sharedManager;
 - (void)setUp;
 - (void)updateForBeat:(NSInteger)currentBeat;
-
+- (void)reset;
 @end

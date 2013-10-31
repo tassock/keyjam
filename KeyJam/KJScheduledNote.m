@@ -10,4 +10,21 @@
 
 @implementation KJScheduledNote
 
++ (instancetype)scheduledNoteWithEvent:(BMNoteEvent*)noteEvent
+{
+    KJScheduledNote *scheduledNote = [[KJScheduledNote alloc] init];
+    if (scheduledNote)
+    {
+        scheduledNote.noteNumber = noteEvent.note;
+        scheduledNote.scheduledBeatStart = noteEvent.beat * 2.0;
+        scheduledNote.scheduledDuration = noteEvent.duration * 2.0;
+    }
+    return scheduledNote;
+}
+
+- (Float64)scheduledBeatEnd
+{
+    return _scheduledBeatStart + _scheduledDuration;
+}
+
 @end

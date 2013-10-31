@@ -10,8 +10,12 @@
 #import "BMNoteEvent.h"
 
 @interface KJScheduledNote : NSObject
-@property (nonatomic, readwrite, strong) BMNoteEvent *noteEvent;
+@property (nonatomic, readwrite, assign) NSUInteger noteNumber;
+@property (nonatomic, readwrite, assign) Float64  scheduledBeatStart;
+@property (nonatomic, readwrite, assign) Float64  scheduledDuration;
+@property (nonatomic, readonly, assign) Float64  scheduledBeatEnd;
 @property (nonatomic, readwrite, assign) Float64  noteOnBeat;
 @property (nonatomic, readwrite, assign) Float64  noteOffBeat;
-@property (nonatomic, readwrite, strong) SKNode *node;
+@property (nonatomic, readwrite, strong) SKShapeNode *node;
++ (instancetype)scheduledNoteWithEvent:(BMNoteEvent*)noteEvent;
 @end

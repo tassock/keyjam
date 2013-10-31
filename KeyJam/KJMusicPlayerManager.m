@@ -40,7 +40,7 @@
     while (currentBeat > _beatsLoaded - _beatsToPreLoad) {
         Float64 afterBeat = _beatsLoaded;
         Float64 beforeBeat = afterBeat + 1;
-        // NSLog(@"FETCHING afterBeat %f, beforeBeat %f", afterBeat, beforeBeat);
+        NSLog(@"FETCHING afterBeat %f, beforeBeat %f", afterBeat, beforeBeat);
         NSArray *noteEvents = [[BMMusicPlayer sharedInstance] noteEventsOnOrAfterBeat:afterBeat beforeBeat:beforeBeat];
         for (BMNoteEvent *noteEvent in noteEvents)
         {
@@ -49,7 +49,19 @@
         _beatsLoaded ++;
     }
     
+    [[KJKeyboardManager sharedManager] evaluateNotesEndedAtBeat:currentBeat];
+    
     // call KJKeyboardManager evaluateNotesEndedAtBeat: when sprites exit the timeline
+    
+}
+
+- (void)reset
+{
+    [[BMMusicPlayer sharedInstance] reset];
+    self.beatsLoaded = 0;
+    [self updateForBeat:0];
+    
+    // empty out KJKeyboardManager's scheduled notes? Should that logic be here?
 }
 
 @end

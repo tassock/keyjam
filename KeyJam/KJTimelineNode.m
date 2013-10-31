@@ -47,11 +47,10 @@
 
 - (void)addNodeForScheduledNote:(KJScheduledNote*)scheduledNote
 {
-    NSUInteger noteNumber = scheduledNote.noteEvent.note;
-    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:noteNumber];
+    KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:scheduledNote.noteNumber];
     CGFloat xOffset = [[KJKeyboardManager sharedManager] xOffsetForKeyModel:keyModel];
-    CGFloat yOffset = (scheduledNote.noteEvent.beat * _beatHeight * 2) + 240;
-    CGFloat height = scheduledNote.noteEvent.duration * _beatHeight * 2;
+    CGFloat yOffset = (scheduledNote.scheduledBeatStart * _beatHeight) + 240;
+    CGFloat height = scheduledNote.scheduledDuration * _beatHeight;
     // NSLog(@"Add note %@ (%u) at beat %f", keyModel, scheduledNote.noteEvent.note, scheduledNote.noteEvent.beat);
     
     SKShapeNode *shape = [[SKShapeNode alloc] init];

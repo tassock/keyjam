@@ -122,7 +122,8 @@ static inline CGPoint CGPointAdd(const CGPoint a,
             }
             break;
         case 36: // return
-            [[BMMusicPlayer sharedInstance] reset];
+            [[KJMusicPlayerManager sharedManager] reset];
+            self.currentBeatInteger = 0;
             
         default:
             break;

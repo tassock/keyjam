@@ -13,6 +13,16 @@
 
 @implementation KJTimelineNode
 
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithColor:[SKColor clearColor] size:size]) 
+    {
+        [self setUp];
+    }
+    return self;
+}
+
+
 - (void)setUp
 {
 //    for (int i = 0; i < 2; i++) {
@@ -58,6 +68,7 @@
     shape.fillColor = [SKColor blueColor];
     shape.strokeColor = [SKColor grayColor];
     scheduledNote.node = shape;
+    shape.zPosition = 10;
     [self addChild:shape];
 }
 

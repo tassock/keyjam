@@ -29,6 +29,8 @@
 		08A2022217E6E2F100C50C18 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A2022117E6E2F100C50C18 /* CoreMIDI.framework */; };
 		08B90001182318B2001214CB /* KJScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B90000182318B2001214CB /* KJScoreManager.m */; };
 		08B9000418231B82001214CB /* KJHudNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B9000318231B82001214CB /* KJHudNode.m */; };
+		08B9000918235E58001214CB /* blackDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 08B9000818235E58001214CB /* blackDot.png */; };
+		08B9000B182362E9001214CB /* whiteDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 08B9000A182362E9001214CB /* whiteDot.png */; };
 		08B9FFFE182315AE001214CB /* c-scale.mid in Resources */ = {isa = PBXBuildFile; fileRef = 08B9FFFD182315AE001214CB /* c-scale.mid */; };
 		08E9EB7E181CE7010004B1C0 /* BMAudioUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB45181CE7010004B1C0 /* BMAudioUnit.m */; };
 		08E9EB7F181CE7010004B1C0 /* BMDistortionUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E9EB47181CE7010004B1C0 /* BMDistortionUnit.m */; };
@@ -97,6 +99,8 @@
 		08B90000182318B2001214CB /* KJScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJScoreManager.m; sourceTree = "<group>"; };
 		08B9000218231B82001214CB /* KJHudNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJHudNode.h; sourceTree = "<group>"; };
 		08B9000318231B82001214CB /* KJHudNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJHudNode.m; sourceTree = "<group>"; };
+		08B9000818235E58001214CB /* blackDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackDot.png; sourceTree = "<group>"; };
+		08B9000A182362E9001214CB /* whiteDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteDot.png; sourceTree = "<group>"; };
 		08B9FFFD182315AE001214CB /* c-scale.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "c-scale.mid"; sourceTree = "<group>"; };
 		08B9FFFF182318B2001214CB /* KJScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJScoreManager.h; sourceTree = "<group>"; };
 		08E9EB44181CE7010004B1C0 /* BMAudioUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAudioUnit.h; sourceTree = "<group>"; };
@@ -271,9 +275,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		08B9000718235E58001214CB /* images */ = {
+			isa = PBXGroup;
+			children = (
+				08B9000A182362E9001214CB /* whiteDot.png */,
+				08B9000818235E58001214CB /* blackDot.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		08B9FFFB182315AE001214CB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				08B9000718235E58001214CB /* images */,
 				08B9FFFC182315AE001214CB /* MIDI */,
 			);
 			path = Resources;
@@ -430,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08E9EBA0181CE8C00004B1C0 /* Sounds in Resources */,
+				08B9000918235E58001214CB /* blackDot.png in Resources */,
 				08B9FFFE182315AE001214CB /* c-scale.mid in Resources */,
 				080B6FC717DEE3FF00B11002 /* Spaceship.png in Resources */,
 				080B6FC917DEE3FF00B11002 /* Images.xcassets in Resources */,
@@ -439,6 +454,7 @@
 				08E9EBA8181E1FF90004B1C0 /* beatChart.png in Resources */,
 				080B6FBD17DEE3FF00B11002 /* Credits.rtf in Resources */,
 				080B6FBF17DEE3FF00B11002 /* MainMenu.xib in Resources */,
+				08B9000B182362E9001214CB /* whiteDot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

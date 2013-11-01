@@ -26,6 +26,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
 {
     KJKeyboardNode *keyboardNode;
     KJHudNode *hudNode;
+    KJTimelineNode *timelineNode;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
     CGFloat hudHeight;
@@ -33,7 +34,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     CGFloat keyboardHeight;
 }
 @property (nonatomic, strong, readwrite) SKNode *hudLayerNode;
-@property (nonatomic, strong, readwrite) KJTimelineNode *timelineLayerNode;
+@property (nonatomic, strong, readwrite) SKNode *timelineLayerNode;
 @property (nonatomic, strong, readwrite) SKNode *keyboardLayerNode;
 @property (nonatomic, assign, readwrite) NSUInteger currentBeatInteger;
 @end
@@ -46,8 +47,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     _hudLayerNode.zPosition = 100;
     [self addChild:_hudLayerNode];
     
-    _timelineLayerNode = [KJTimelineNode node];
-    _timelineLayerNode.beatHeight = 100;
+    _timelineLayerNode = [SKNode node];
     [self addChild:_timelineLayerNode];
     
     _keyboardLayerNode = [SKNode node];
@@ -55,7 +55,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     [self addChild:_keyboardLayerNode];
 }
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
@@ -71,10 +71,10 @@ static inline CGPoint CGPointAdd(const CGPoint a,
         
         [self setupSceneLayers];
         [self setUpHUD];
-        [_timelineLayerNode setUp];
+        [self setUpTimeline];
         [self setUpKeyboard];
         
-        [KJMusicPlayerManager sharedManager].timelineNode = _timelineLayerNode;
+        [KJMusicPlayerManager sharedManager].timelineNode = timelineNode;
         [KJMusicPlayerManager sharedManager].beatsToPreLoad = 6;
         self.currentBeatInteger = 0;
     }
@@ -96,6 +96,33 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     hudNode.position = CGPointMake(0, self.size.height - hudHeight);
     hudNode.anchorPoint = CGPointZero;
     [_hudLayerNode addChild:hudNode];
+}
+
+- (void)setUpTimeline
+{
+    timelineNode = [[KJTimelineNode alloc] initWithSize:CGSizeMake(self.size.width, self.size.height - hudHeight - keyboardHeight)];
+    timelineNode.position = CGPointMake(0, self.size.height - keyboardHeight); // not really positioned right :/
+    timelineNode.anchorPoint = CGPointZero;
+    timelineNode.beatHeight = 100;
+    [_timelineLayerNode addChild:timelineNode];
+    
+    [self addChild:[self starfieldEmitterNodeWithSpeed:-24
+                                              lifetime:(self.frame.size.height / 23)
+                                                 scale:0.2
+                                             birthRate:1
+                                                 color:[SKColor whiteColor]]];
+    [self addChild:
+     [self starfieldEmitterNodeWithSpeed:-16
+                                lifetime:(self.frame.size.height/10)
+                                   scale:0.14
+                               birthRate:2
+                                   color:[SKColor colorForControlTint:0.85]]];
+    [self addChild:
+     [self starfieldEmitterNodeWithSpeed:-10
+                                lifetime:(self.frame.size.height/5)
+                                   scale:0.10
+                               birthRate:5
+                                   color:[SKColor colorForControlTint:0.7]]];
 }
 
 -(void)keyDown:(NSEvent *)theEvent
@@ -157,7 +184,7 @@ static inline CGPoint CGPointAdd(const CGPoint a,
         self.currentBeatInteger = (NSUInteger)currentBeatFloat;
     }
     
-    [_timelineLayerNode updateToBeat:currentBeatFloat];
+    [timelineNode updateToBeat:currentBeatFloat];
     [hudNode updateToBeat:currentBeatFloat];
 }
 
@@ -166,6 +193,64 @@ static inline CGPoint CGPointAdd(const CGPoint a,
     _currentBeatInteger = integer;
     NSLog(@"currentWholeBeat %lu", (unsigned long)_currentBeatInteger);
     [[KJMusicPlayerManager sharedManager] updateForBeat:_currentBeatInteger];
+}
+
+- (SKEmitterNode *)starfieldEmitterNodeWithSpeed:(float)speed
+                                        lifetime:(float)lifetime scale:(float)scale
+                                       birthRate:(float)birthRate color:(SKColor*)color
+{
+    
+//    SKLabelNode *star =
+//    [SKLabelNode labelNodeWithFontNamed:@"Monaco"];
+//    star.fontSize = 80.0f;
+//    star.text = @".";
+//    
+//    SKTexture *texture;// = [SKTexture textureWithImageNamed:@"blackDot.png"];
+//    SKView *textureView = [SKView new];
+//    texture = [textureView textureFromNode:star];
+//    texture.filteringMode = SKTextureFilteringNearest;
+    
+    SKTexture *texture = [SKTexture textureWithImageNamed:@"whiteDot"];
+    
+    SKEmitterNode *emitterNode = [SKEmitterNode new];
+    emitterNode.particleTexture = texture;
+    emitterNode.particleBirthRate = birthRate;
+    emitterNode.particleColor = color;
+    emitterNode.particleLifetime = lifetime;
+    emitterNode.particleSpeed = speed;
+    emitterNode.particleScale = scale;
+    emitterNode.particleColorBlendFactor = 1;
+    emitterNode.position = CGPointMake(CGRectGetMidX(self.frame),
+                                       CGRectGetMaxY(self.frame));
+    emitterNode.particlePositionRange =
+    CGVectorMake(CGRectGetMaxX(self.frame), 0);
+    
+//    emitterNode.particleAction = [SKAction repeatActionForever:
+//                                  [SKAction sequence:@[
+//                                                       [SKAction rotateToAngle:-M_PI_4 duration:1],
+//                                                       [SKAction rotateToAngle:M_PI_4 duration:1],
+//                                                       ]]];
+//    emitterNode.particleSpeedRange = 16.0;
+//    
+//    // 1
+//    float twinkles = 20;
+//    SKKeyframeSequence *colorSequence =
+//    [[SKKeyframeSequence alloc] initWithCapacity:twinkles*2];
+//    // 2
+//    float twinkleTime = 1.0/twinkles;
+//    for (int i = 0; i < twinkles; i++) {
+//        
+//        // 3
+//        [colorSequence addKeyframeValue:[SKColor whiteColor] time:((i*2)*twinkleTime/2)];
+//        [colorSequence addKeyframeValue:[SKColor yellowColor] time:((i*2+1)*(twinkleTime/2))];
+//    }
+//    
+//    // 4
+//    emitterNode.particleColorSequence = colorSequence;
+    
+    [emitterNode advanceSimulationTime:lifetime];
+    
+    return emitterNode;
 }
 
 @end

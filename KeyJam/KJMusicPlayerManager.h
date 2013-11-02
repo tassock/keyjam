@@ -23,8 +23,13 @@
 - (void)reset;
 
 #pragma mark - BMMidiListener
-// finds the next scheduled KJScheduledNote and sets noteOnBeat to the current beat
-// Calls noteOn for corresponding KJKeyModel to update UI
+
+/**
+ *  Checks for a KJScheduledNote to be played at this time. If found set metNoteOnTarget to the current beat, call noteOn corresponding KJKeyModel
+ *
+ *  @param note     note Number of the note on
+ *  @param velocity velocity of the note on
+ */
 - (void)noteOnWithNote:(UInt32)note velocity:(UInt32)velocity;
 
 // finds the next scheduled KJScheduledNote and sets noteOffBeat to the current beat

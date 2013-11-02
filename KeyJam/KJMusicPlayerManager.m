@@ -70,18 +70,17 @@
 
 #pragma mark - BMMidiListener
 
-// finds the next scheduled KJScheduledNote and sets noteOnBeat to the current beat
-// Calls noteOn for corresponding KJKeyModel to update UI
 - (void)noteOnWithNote:(UInt32)note velocity:(UInt32)velocity
 {
     KJKeyModel *keyModel = [[KJKeyboardManager sharedManager] keyModelForNoteNumber:note];
     [keyModel noteOn];
     
     Float64 currentBeatFloat = [BMMusicPlayer sharedInstance].currentBeatFloat;
+    Float64 noteOnWiggleRoom = 0.3;
     for (KJScheduledNote *scheduledNote in _scheduledNotes)
     {
         if (scheduledNote.noteNumber == note &&
-            scheduledNote.scheduledBeatStart <= currentBeatFloat &&
+            scheduledNote.scheduledBeatStart <= currentBeatFloat + noteOnWiggleRoom &&
             scheduledNote.scheduledBeatEnd >= currentBeatFloat &&
             scheduledNote.metNoteOnTarget == NO)
         {

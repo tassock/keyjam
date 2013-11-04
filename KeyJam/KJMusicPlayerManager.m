@@ -44,10 +44,11 @@
     while (currentBeat > _beatsLoaded - _beatsToPreLoad) {
         Float64 afterBeat = _beatsLoaded;
         Float64 beforeBeat = afterBeat + 1;
-        NSLog(@"FETCHING afterBeat %f, beforeBeat %f", afterBeat, beforeBeat);
+        // NSLog(@"FETCHING afterBeat %f, beforeBeat %f", afterBeat, beforeBeat);
         NSArray *noteEvents = [[BMMusicPlayer sharedInstance] noteEventsOnOrAfterBeat:afterBeat beforeBeat:beforeBeat];
         for (BMNoteEvent *noteEvent in noteEvents)
         {
+            NSLog(@"noteEvent.note %u", noteEvent.note);
             [self addScheduledNoteEvent:noteEvent];
         }
         _beatsLoaded ++;

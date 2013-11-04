@@ -143,8 +143,59 @@ static inline CGPoint CGPointAdd(const CGPoint a,
             [[KJMusicPlayerManager sharedManager] reset];
             [[KJScoreManager sharedManager] resetScore];
             self.currentBeatInteger = 0;
-            
+            break;
         default:
+            break;
+    }
+    
+    UInt32 midiNote = (UInt32)[self midiNoteForKeyCode:theEvent.keyCode];
+    if (midiNote != 500) [[BMMidiManager sharedInstance] reportNoteOnWithNote:midiNote velocity:127];
+}
+
+- (void)keyUp:(NSEvent *)theEvent
+{
+    UInt32 midiNote = (UInt32)[self midiNoteForKeyCode:theEvent.keyCode];
+    if (midiNote != 500) [[BMMidiManager sharedInstance] reportNoteOffWithNote:midiNote];
+}
+
+- (NSUInteger)midiNoteForKeyCode:(NSUInteger)keyCode
+{
+    switch (keyCode) {
+        case 0: // a
+            return 60; // C3
+            break;
+        case 1: // s
+            return 62;
+            break;
+        case 2: // d
+            return 64;
+            break;
+        case 3: // f
+            return 65;
+            break;
+        case 4: // h
+            return 69;
+            break;
+        case 5: // g
+            return 67;
+            break;
+        case 38: // j
+            return 71;
+            break;
+        case 40: // k
+            return 72;
+            break;
+        case 37: // l
+            return 73;
+            break;
+        case 41: // ;
+            return 75;
+            break;
+        case 39: // '
+            return 77;
+            break;
+        default:
+            return 500; // junk value
             break;
     }
 }
